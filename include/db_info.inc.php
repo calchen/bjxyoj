@@ -3,7 +3,7 @@
 static 	$DB_HOST="localhost";
 static 	$DB_NAME="jol";
 static 	$DB_USER="root";
-static 	$DB_PASS="root";
+static 	$DB_PASS="%8gnERuOYsaXLeDD";
 	// connect db 
 static 	$OJ_NAME="滨江学院 OJ";
 static 	$OJ_HOME="./";
