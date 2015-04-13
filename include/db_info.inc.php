@@ -2,8 +2,8 @@
 	ini_set("display_errors","Off");
 static 	$DB_HOST="localhost";
 static 	$DB_NAME="jol";
-static 	$DB_USER="root";
-static 	$DB_PASS="%8gnERuOYsaXLeDD";
+static 	$DB_USER="bjxyoj";
+static 	$DB_PASS="TbLbVkyU^Fz@Z1sX";
 	// connect db 
 static 	$OJ_NAME="滨江学院 OJ";
 static 	$OJ_HOME="./";
