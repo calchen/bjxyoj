@@ -1,6 +1,6 @@
 <?php @session_start();
 	ini_set("display_errors","Off");
-static 	$DB_HOST="localhost";
+static 	$DB_HOST="127.0.0.1";
 static 	$DB_NAME="jol";
 static 	$DB_USER="bjxyoj";
 static 	$DB_PASS="TbLbVkyU^Fz@Z1sX";
