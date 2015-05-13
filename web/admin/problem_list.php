@@ -28,8 +28,8 @@ if (isset($_GET['page'])){
 $pstart=1000+$page_cnt*intval($page-1);
 $pend=$pstart+$page_cnt;
 
-echo "<title>Problem List</title>";
-echo "<center><h2>Problem List</h2></center>";
+echo "<title>问题列表</title>";
+echo "<center><h2>问题列表</h2></center>";
 
 
 $sql="select `problem_id`,`title`,`in_date`,`defunct` FROM `problem` where problem_id>=$pstart and problem_id<=$pend order by `problem_id` desc";
