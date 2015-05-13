@@ -52,11 +52,11 @@ for (;$row=mysql_fetch_object($result);){
                 echo "<td><a href=contest_edit.php?cid=$row->contest_id>编辑</a>";
                 echo "<td><a href=contest_add.php?cid=$row->contest_id>复制</a>";
                 if(isset($_SESSION['administrator'])){
-                        echo "<td><a href=\"problem_export_xml.php?cid=$row->contest_id&getkey=".$_SESSION['getkey']."\">Export</a>";
+                        echo "<td><a href=\"problem_export_xml.php?cid=$row->contest_id&getkey=".$_SESSION['getkey']."\">导出</a>";
                 }else{
                   echo "<td>";
                 }
-     echo "<td> <a href=\"../export_contest_code.php?cid=$row->contest_id&getkey=".$_SESSION['getkey']."\">Logs</a>";
+     echo "<td> <a href=\"../export_contest_code.php?cid=$row->contest_id&getkey=".$_SESSION['getkey']."\">日志</a>";
         }else{
                 echo "<td colspan=5 align=right><a href=contest_add.php?cid=$row->contest_id>Copy</a><td>";
 
