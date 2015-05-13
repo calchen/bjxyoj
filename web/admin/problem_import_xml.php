@@ -1,7 +1,7 @@
 <?php require_once ("admin-header.php");
 require_once("../include/check_post_key.php");
 if (!(isset($_SESSION['administrator']))){
-	echo "<a href='../loginpage.php'>Please Login First!</a>";
+	echo "<a href='../loginpage.php'>请先登录！</a>";
 	exit(1);
 }
 ?>

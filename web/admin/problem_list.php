@@ -10,7 +10,7 @@ if (!(isset($_SESSION['administrator'])
                 ||isset($_SESSION['contest_creator'])
                 ||isset($_SESSION['problem_editor'])
                 )){
-        echo "<a href='../loginpage.php'>Please Login First!</a>";
+        echo "<a href='../loginpage.php'>请先登录！</a>";
         exit(1);
 }
 $keyword=$_GET['keyword'];
@@ -31,11 +31,6 @@ $pend=$pstart+$page_cnt;
 echo "<title>Problem List</title>";
 echo "<center><h2>Problem List</h2></center>";
 
-for ($i=1;$i<=$cnt;$i++){
-        if ($i>1) echo '&nbsp;';
-        if ($i==$page) echo "<span class=red>$i</span>";
-        else echo "<a href='problem_list.php?page=".$i."'>".$i."</a>";
-}
 
 $sql="select `problem_id`,`title`,`in_date`,`defunct` FROM `problem` where problem_id>=$pstart and problem_id<=$pend order by `problem_id` desc";
 //echo $sql;
@@ -47,8 +42,8 @@ $result=mysql_query($sql) or die(mysql_error());
 <?php
 echo "<center><table class='table table-striped' width=90% border=1>";
 echo "<form method=post action=contest_add.php>";
-echo "<tr><td colspan=7><input type=submit name='problem2contest' value='CheckToNewContest'>";
-echo "<tr><td>PID<td>Title<td>Date";
+echo "<tr><td colspan=7><input type=submit name='problem2contest' value='增加到新的竞赛&作业'>";
+echo "<tr><td>问题编号<td>标题<td>日期";
 if(isset($_SESSION['administrator'])||isset($_SESSION['problem_editor'])){
         if(isset($_SESSION['administrator']))   echo "<td>Status<td>Delete";
         echo "<td>Edit<td>TestData</tr>";
@@ -80,5 +75,16 @@ for (;$row=mysql_fetch_object($result);){
 echo "<tr><td colspan=7><input type=submit name='problem2contest' value='CheckToNewContest'>";
 echo "</tr></form>";
 echo "</table></center>";
+
+
+echo "页数 ";
+for ($i=1;$i<=$cnt;$i++){
+    if ($i>1) echo '&nbsp;';
+    if ($i==$page)
+        echo "<span class=red>$i</span>";
+    else
+        echo "<a href='problem_list.php?page=".$i."'>".$i."</a>";
+}
+
 require("../oj-footer.php");
 ?>

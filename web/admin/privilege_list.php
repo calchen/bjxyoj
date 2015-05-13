@@ -1,7 +1,7 @@
 <?php require("admin-header.php");
 require_once("../include/set_get_key.php");
 if (!(isset($_SESSION['administrator']))){
-	echo "<a href='../loginpage.php'>Please Login First!</a>";
+	echo "<a href='../loginpage.php'>请先登录！</a>";
 	exit(1);
 }
 echo "<title>Privilege List</title>"; 

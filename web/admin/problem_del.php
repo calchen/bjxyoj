@@ -3,7 +3,7 @@
 ini_set("display_errors","On");
 require_once("../include/check_get_key.php");
 if (!(isset($_SESSION['administrator']))){
-        echo "<a href='../loginpage.php'>Please Login First!</a>";
+        echo "<a href='../loginpage.php'>请先登录！</a>";
         exit(1);
 }
 ?> 

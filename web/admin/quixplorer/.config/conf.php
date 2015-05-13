@@ -6,7 +6,7 @@
 		     &&isset($_SESSION["p".intval($_GET["dir"])])
 		     )
 		)){
-	echo "<a href='../../loginpage.php'>Please Login First!</a>";
+	echo "<a href='../../loginpage.php'>请先登录！</a>";
 	exit(1);
 }
 require_once("../../include/db_info.inc.php");

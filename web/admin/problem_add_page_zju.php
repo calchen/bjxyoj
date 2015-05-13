@@ -11,7 +11,7 @@
 <?php require_once("../include/db_info.inc.php");?>
 <?php require_once("admin-header.php");
 if (!(isset($_SESSION['administrator']))){
-	echo "<a href='../loginpage.php'>Please Login First!</a>";
+	echo "<a href='../loginpage.php'>è¯·å…ˆç™»å½•ï¼</a>";
 	exit(1);
 }
 ?>
@@ -52,7 +52,7 @@ include_once("../fckeditor/fckeditor.php") ;
   //$sample_input=pre_grep(">[\\s]*Sample Input([\\s\\S]*?)>[\\s]*Sample Out?put",$html->outertext);
   //$sample_output=$html->find(">[\\s]*Sample Out?put([\\s\\S]*?)<hr",0);
   
-  //ÄÜÁ¦ºÍÊ±¼äÓĞÏŞ£¬ÏëÓÃÕıÔò±í´ïÊ½×ö³É¹¦ÄÜºÃÒ»µãµÄ£¬ÊµÏÖ²»ÁË£¬Áô¸øÓĞĞËÈ¤µÄ¸Ä½ø°É£¡
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ş£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½É¹ï¿½ï¿½Üºï¿½Ò»ï¿½ï¿½Ä£ï¿½Êµï¿½Ö²ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¤ï¿½Ä¸Ä½ï¿½É£ï¿½
   
 ?>
 <form method=POST action=problem_add.php>

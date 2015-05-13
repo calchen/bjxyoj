@@ -8,7 +8,7 @@
 }
 require_once("admin-header.php");
 if (!(isset($_SESSION['administrator']))){
-	echo "<a href='../loginpage.php'>Please Login First!</a>";
+	echo "<a href='../loginpage.php'>请先登录！</a>";
 	exit(1);
 }
    $maxfile=min(ini_get("upload_max_filesize"),ini_get("post_max_size"));
