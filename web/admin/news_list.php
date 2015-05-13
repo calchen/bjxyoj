@@ -4,13 +4,13 @@ if (!isset($_SESSION['administrator'])){
 	echo "<a href='../loginpage.php'>Please Login First!</a>";
 	exit(1);
 }
-echo "<title>Problem List</title>";
+echo "<title>新闻列表</title>";
 echo "<center><h2>Problem List</h2></center>";
 $sql="select `news_id`,`user_id`,`title`,`time`,`defunct` FROM `news` order by `news_id` desc";
 $result=mysql_query($sql) or die(mysql_error());
 echo "<center><table width=90% border=1>";
 
-echo "<tr><td>PID<td>Title<td>Date<td>Status<td>Edit</tr>";
+echo "<tr><td>题目编号<td>标题<td>日期<td>状态<td>操作</tr>";
 for (;$row=mysql_fetch_object($result);){
 	echo "<tr>";
 	echo "<td>".$row->news_id;
