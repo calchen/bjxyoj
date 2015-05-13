@@ -14,9 +14,9 @@ if (!(isset($_SESSION['administrator']))){
    $maxfile=min(ini_get("upload_max_filesize"),ini_get("post_max_size"));
 
 ?>
-Import FPS data ,please make sure you file is smaller than [<?php echo $maxfile?>] <br/>
-or set upload_max_filesize and post_max_size in PHP.ini<br/>
-if you fail on import big files[10M+],try enlarge your [memory_limit]  setting in php.ini.<br>
+导入FPS数据 ,请保证文件小于[<?php echo $maxfile?>] <br/>
+或者在PHP.ini设置upload_max_filesize和post_max_size<br/>
+如果你导入10M以上文件失败,请尝试在PHP.ini设置更大的memory_limit<br>
 <?php 
     $show_form=true;
    if(!isset($OJ_SAE)||!$OJ_SAE){
@@ -38,11 +38,11 @@ if you fail on import big files[10M+],try enlarge your [memory_limit]  setting i
 ?>
 <br>
 <form action='problem_import_xml.php' method=post enctype="multipart/form-data">
-	<b>Import Problem:</b><br />
+	<b>导入问题:</b><br />
 	
 	<input type=file name=fps >
 	<?php require_once("../include/set_post_key.php");?>
-    <input type=submit value='Import'>
+    <input type=submit value='导入'>
 </form>
 <?php 
   
@@ -51,4 +51,4 @@ if you fail on import big files[10M+],try enlarge your [memory_limit]  setting i
 ?>
 <br>
 
-free problem set FPS-xml can be download at <a href=http://code.google.com/p/freeproblemset/downloads/list>FPS-Googlecode</a>
+免费的FPS xml格式的问题集下载地址：<a href=http://code.google.com/p/freeproblemset/downloads/list>FPS-Googlecode</a>

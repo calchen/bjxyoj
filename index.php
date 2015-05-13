@@ -6,9 +6,9 @@
     require_once('./include/db_info.inc.php');
 	require_once('./include/setlang.php');
 	$view_title= "Welcome To Online Judge";
-	
-///////////////////////////MAIN	
-	
+
+///////////////////////////MAIN
+
 	$view_news="";
 	$sql=	"SELECT * "
 			."FROM `news` "
@@ -21,13 +21,13 @@
 		$view_news.= mysql_error();
 	}else{
 		$view_news.= "<table width=96%>";
-		
+
 		while ($row=mysql_fetch_object($result)){
 			$view_news.= "<tr><td><td><big><b>".$row->title."</b></big>-<small>[".$row->user_id."]</small></tr>";
 			$view_news.= "<tr><td><td>".$row->content."</tr>";
 		}
 		mysql_free_result($result);
-		$view_news.= "<tr><td width=20%><td>This <a href=http://cm.baylor.edu/welcome.icpc>ACM/ICPC</a> OnlineJudge is a GPL product from <a href=http://github.com/zhblue/hustoj>hustoj</a></tr>";
+		$view_news.= "<tr><td width=20%><td>本 <a href=http://cm.baylor.edu/welcome.icpc>ACM/ICPC</a> 在线评测系统是一个GP开源项目，基于<a href=http://github.com/zhblue/hustoj>hustoj</a></tr>";
 		$view_news.= "</table>";
 	}
 $view_apc_info="";
@@ -36,25 +36,25 @@ $sql=	"SELECT UNIX_TIMESTAMP(date(in_date))*1000 md,count(1) c FROM `solution`  
 	$result=mysql_query($sql);//mysql_escape_string($sql));
 	$chart_data_all= array();
 //echo $sql;
-    
+
 	while ($row=mysql_fetch_array($result)){
 		$chart_data_all[$row['md']]=$row['c'];
     }
-    
+
 $sql=	"SELECT UNIX_TIMESTAMP(date(in_date))*1000 md,count(1) c FROM `solution` where result=4 group by md order by md desc ";
 	$result=mysql_query($sql);//mysql_escape_string($sql));
 	$chart_data_ac= array();
 //echo $sql;
-    
+
 	while ($row=mysql_fetch_array($result)){
 		$chart_data_ac[$row['md']]=$row['c'];
     }
-    
-	
+
+
 
 
 if(function_exists('apc_cache_info')){
-	 $_apc_cache_info = apc_cache_info(); 
+	 $_apc_cache_info = apc_cache_info();
 		$view_apc_info =_apc_cache_info;
 }
 

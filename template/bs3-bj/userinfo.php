@@ -22,6 +22,11 @@
 <body>
 
 <div class="container">
+    <style>
+        #logs td {
+            padding: 5px 10px 5px 10px;
+        }
+    </style>
     <?php include("template/$OJ_TEMPLATE/nav.php"); ?>
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
@@ -84,10 +89,21 @@
                             function p(id) {
                                 document.write("<a href=problem.php?id=" + id + ">" + id + " </a>");
                             }
+                            function pbr(id) {
+                                document.write("<a href=problem.php?id=" + id + ">" + id + " </a><br>");
+                            }
                             <?php $sql="SELECT DISTINCT `problem_id` FROM `solution` WHERE `user_id`='$user_mysql' AND `result`=4 ORDER BY `problem_id` ASC";
                             if (!($result=mysql_query($sql))) echo mysql_error();
+                            $index = 0;
                             while ($row=mysql_fetch_array($result))
-                            {echo "p($row[0]);";}
+                            {
+                                $index++;
+                                if($index % 10 == 0) {
+                                    echo "pbr($row[0]);";
+                                }else {
+                                    echo "p($row[0]);";
+                                }
+                            }
                             mysql_free_result($result);
                             ?>
                         </script>
@@ -138,7 +154,7 @@
             if (isset($_SESSION['administrator']))
             {
                 ?>
-                <table border=1>
+                <table border=1 id="logs">
                 <tr class=toprow>
                     <td>用户名
                     <td>密码
