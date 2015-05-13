@@ -139,9 +139,9 @@ if(isset($_POST['do'])){
 	}
 }
 ?>
-<b>Update DataBase</b>
-	Create New Tables ,drop useless columes.
-	<b>Necessary for using plagiarism detection.</b>
+<b>更新数据库</b>
+	创建新的表，删除没用的列。
+	<b>仅在启用抄袭检测后需要。</b>
 	<form action='update_db.php' method=post>
 		<?php require_once("../include/set_post_key.php");?>
 		<input type='hidden' name='do' value='do'>
@@ -149,6 +149,6 @@ if(isset($_POST['do'])){
 	</form>
 	
 <?php if (file_exists("update_pw.php")) {	?>
-   <a href="update_pw.php">Upgrade all users password storage form to get more security.</a>
-   * only do once !
+   <a href="update_pw.php">升级所有用户的的密码存储，使得其更加安全。</a>
+   * 只能使用一次!
 <?php }?>

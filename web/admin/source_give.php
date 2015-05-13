@@ -18,8 +18,8 @@ if (!(isset($_SESSION['administrator']))){
 ?>
 <form action='source_give.php' method=post>
 	<b>转移源码:</b><br />
-	源用户:<input type=text size=10 name="from" value="zhblue"><br />
-	目标用户:<input type=text size=10 name="to" value="standard"><br />
+	源用户:<input type=text size=10 name="from"><br />
+	目标用户:<input type=text size=10 name="to"><br />
 	开始编号:<input type=text size=10 name="start"><br />
 	结束编号:<input type=text size=10 name="end"><br />
 	<input type='hidden' name='do' value='do'>
