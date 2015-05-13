@@ -37,7 +37,7 @@ if (!(isset($_SESSION['administrator']))){
 }
 ?>
 <b>重判题目</b>
-	<ol>
+	<ol style="margin-left: 50px;">
 	<li>问题编号
 	<form action='rejudge.php' method=post>
 		<input type=input name='rjpid'>	<input type='hidden' name='do' value='do'>
