@@ -36,23 +36,23 @@ if (!(isset($_SESSION['administrator']))){
 
 }
 ?>
-<b>Rejudge</b>
+<b>重判题目</b>
 	<ol>
-	<li>Problem
+	<li>问题编号
 	<form action='rejudge.php' method=post>
 		<input type=input name='rjpid'>	<input type='hidden' name='do' value='do'>
-		<input type=submit value=submit>
+		<input type=submit value=重判>
 		<?php require_once("../include/set_post_key.php");?>
 	</form>
-	<li>Solution
+	<li>运行编号
 	<form action='rejudge.php' method=post>
 		<input type=input name='rjsid'>	<input type='hidden' name='do' value='do'>
 		<input type=hidden name="postkey" value="<?php echo $_SESSION['postkey']?>">
-		<input type=submit value=submit>
+		<input type=submit value=重判>
 	</form>
-	<li>Contest
+	<li>竞赛&作业编号
 	<form action='rejudge.php' method=post>
 		<input type=input name='rjcid'>	<input type='hidden' name='do' value='do'>
 		<input type=hidden name="postkey" value="<?php echo $_SESSION['postkey']?>">
-		<input type=submit value=submit>
+		<input type=submit value=重判>
 	</form>
