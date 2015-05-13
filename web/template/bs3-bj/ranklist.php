@@ -29,7 +29,7 @@
             <thead>
             <tr>
                 <td colspan=3 align=left>
-                    <form class="form-inline" action=userinfo.php>
+                    <form class="form-inline" action=userinfo.php style="margin-bottom: 5px;">
                         <?php echo $MSG_USER ?><input class="form-control" name=user>
                         <input type=submit class="form-control" value=Go>
                     </form>
