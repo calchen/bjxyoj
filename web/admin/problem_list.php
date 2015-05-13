@@ -46,7 +46,7 @@ echo "<tr><td colspan=7><input type=submit name='problem2contest' value='增加�
 echo "<tr><td>问题编号<td>标题<td>日期";
 if(isset($_SESSION['administrator'])||isset($_SESSION['problem_editor'])){
         if(isset($_SESSION['administrator']))   echo "<td>Status<td>Delete";
-        echo "<td>Edit<td>TestData</tr>";
+        echo "<td>编辑<td>测试数据</tr>";
 }
 for (;$row=mysql_fetch_object($result);){
         echo "<tr>";
@@ -57,22 +57,22 @@ for (;$row=mysql_fetch_object($result);){
         if(isset($_SESSION['administrator'])||isset($_SESSION['problem_editor'])){
                 if(isset($_SESSION['administrator'])){
                         echo "<td><a href=problem_df_change.php?id=$row->problem_id&getkey=".$_SESSION['getkey'].">"
-                        .($row->defunct=="N"?"<span titlc='click to reserve it' class=green>Available</span>":"<span class=red title='click to be available'>Reserved</span>")."</a><td>";
+                        .($row->defunct=="N"?"<span titlc='click to reserve it' class=green>可用的</span>":"<span class=red title='click to be available'>保留的</span>")."</a><td>";
                         if($OJ_SAE||function_exists("system")){
                               ?>
-                              <a href=# onclick='javascript:if(confirm("Delete?")) location.href="problem_del.php?id=<?php echo $row->problem_id?>&getkey=<?php echo $_SESSION['getkey']?>";'>
-                              Delete</a>
+                              <a href=# onclick='javascript:if(confirm("删除?")) location.href="problem_del.php?id=<?php echo $row->problem_id?>&getkey=<?php echo $_SESSION['getkey']?>";'>
+                              删除</a>
                               <?php
                         }
                 }
                 if(isset($_SESSION['administrator'])||isset($_SESSION["p".$row->problem_id])){
-                        echo "<td><a href=problem_edit.php?id=$row->problem_id&getkey=".$_SESSION['getkey'].">Edit</a>";
-                        echo "<td><a href=quixplorer/index.php?action=list&dir=$row->problem_id&order=name&srt=yes>TestData</a>";
+                        echo "<td><a href=problem_edit.php?id=$row->problem_id&getkey=".$_SESSION['getkey'].">编辑</a>";
+                        echo "<td><a href=quixplorer/index.php?action=list&dir=$row->problem_id&order=name&srt=yes>测试数据</a>";
                 }
         }
         echo "</tr>";
 }
-echo "<tr><td colspan=7><input type=submit name='problem2contest' value='CheckToNewContest'>";
+echo "<tr><td colspan=7><input type=submit name='problem2contest' value='增加到新的竞赛&作业'>";
 echo "</tr></form>";
 echo "</table></center>";
 
