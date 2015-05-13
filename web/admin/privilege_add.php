@@ -16,7 +16,7 @@ if(isset($_POST['do'])){
 <form method=post>
 <?php require("../include/set_post_key.php");?>
 	<b>设置用户权限:</b><br />
-	用户:<input type=text size=10 name="user_id"><br />
+	用户名:<input type=text size=10 name="user_id"><br />
 	权限:
 	<select name="rightstr">
 <?php
@@ -33,9 +33,9 @@ while(list($key, $val)=each($rightarray)) {
 	<input type=submit value='设置'>
 </form>
 <form method=post>
-	<b>Add contest for User:</b><br />
-	User:<input type=text size=10 name="user_id"><br />
-	Contest:<input type=text size=10 name="rightstr">c1000 for Contest1000<br />
+	<b>增加用户到竞赛&作业:</b><br />
+	用户名:<input type=text size=10 name="user_id"><br />
+    竞赛&作业编号:<input type=text size=10 name="rightstr">c1000 表示竞赛&作业1000<br />
 	<input type='hidden' name='do' value='do'>
 	<input type=submit value='Add'>
 	<input type=hidden name="postkey" value="<?php echo $_SESSION['postkey']?>">
