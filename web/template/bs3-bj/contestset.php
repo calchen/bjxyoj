@@ -32,7 +32,7 @@
                     <td width=10%>ID
                     <td width=50%>名称
                     <td width=30%>状态
-                    <td width=10%>权限
+                    <td width=10%>类型
                     <td>创建者
                 </tr>
                 </thead>

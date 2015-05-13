@@ -5,8 +5,8 @@
         }
 
 
-echo "<title>Problem List</title>";
-echo "<center><h2>Contest List</h2></center>";
+echo "<title>竞赛&作业列表</title>";
+echo "<center><h2>竞赛&作业列表</h2></center>";
 require_once("../include/set_get_key.php");
 $sql="SELECT max(`contest_id`) as upid, min(`contest_id`) as btid  FROM `contest`";
 $page_cnt=50;
@@ -37,7 +37,7 @@ $result=mysql_query($sql) or die(mysql_error());
 
 <?php
 echo "<center><table class='table table-striped' width=90% border=1>";
-echo "<tr><td>ContestID<td>Title<td>StartTime<td>EndTime<td>Private<td>Status<td>Edit<td>Copy<td>Export<td>Logs";
+echo "<tr><td>竞赛&作业编号<td>标题<td>开始时间<td>结束时间<td>类型<td>状态<td>编辑<td>复制<td>导出<td>日志";
 echo "</tr>";
 for (;$row=mysql_fetch_object($result);){
         echo "<tr>";
@@ -47,10 +47,10 @@ for (;$row=mysql_fetch_object($result);){
         echo "<td>".$row->end_time;
         $cid=$row->contest_id;
         if(isset($_SESSION['administrator'])||isset($_SESSION["m$cid"])){
-                echo "<td><a href=contest_pr_change.php?cid=$row->contest_id&getkey=".$_SESSION['getkey'].">".($row->private=="0"?"Public->Private":"Private->Public")."</a>";
-                echo "<td><a href=contest_df_change.php?cid=$row->contest_id&getkey=".$_SESSION['getkey'].">".($row->defunct=="N"?"<span class=green>Available</span>":"<span class=red>Reserved</span>")."</a>";
-                echo "<td><a href=contest_edit.php?cid=$row->contest_id>Edit</a>";
-                echo "<td><a href=contest_add.php?cid=$row->contest_id>Copy</a>";
+                echo "<td><a href=contest_pr_change.php?cid=$row->contest_id&getkey=".$_SESSION['getkey'].">".($row->private=="0"?"公开->私有":"私有->公开")."</a>";
+                echo "<td><a href=contest_df_change.php?cid=$row->contest_id&getkey=".$_SESSION['getkey'].">".($row->defunct=="N"?"<span class=green>可用的</span>":"<span class=red>保留的</span>")."</a>";
+                echo "<td><a href=contest_edit.php?cid=$row->contest_id>编辑</a>";
+                echo "<td><a href=contest_add.php?cid=$row->contest_id>复制</a>";
                 if(isset($_SESSION['administrator'])){
                         echo "<td><a href=\"problem_export_xml.php?cid=$row->contest_id&getkey=".$_SESSION['getkey']."\">Export</a>";
                 }else{

@@ -140,7 +140,7 @@ else if(isset($_POST['problem2contest'])){
 	日:<input class=input-mini  type=text name=eday size=2 value=<?php echo date('d')+(date('H')+4>23?1:0)?>>&nbsp;
 	时:<input class=input-mini  type=text name=ehour size=2 value=<?php echo (date('H')+4)%24?>>&nbsp;
 	分:<input class=input-mini  type=text name=eminute value=00 size=2 ></p>
-	类型:<select name=private><option value=0>Public</option><option value=1>Private</option></select>
+	类型:<select name=private><option value=0>公开</option><option value=1>私有</option></select>
 	密码:<input type=text name=password value="">
 	语言:<select name="lang[]" multiple="multiple"    style="height:220px">
 	<?php

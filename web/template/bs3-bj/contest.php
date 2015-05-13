@@ -43,7 +43,7 @@
                 ?>&nbsp;
                 权限:<?php
                 if ($view_private == '0')
-                    echo "<span class=blue>公开</font>";
+                    echo "<span class=blue>类型</font>";
                 else
                     echo "<span class=red>私有</font>";
                 ?>
