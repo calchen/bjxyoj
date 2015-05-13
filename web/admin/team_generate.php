@@ -42,13 +42,14 @@ if (!(isset($_SESSION['administrator']))){
 	
 }
 ?>
-<b>TeamGenerator:</b>
+<b>比赛队账号生成器:</b>
 	
 	<form action='team_generate.php' method=post>
-	    Prefix:<input type='test' name='prefix' value='team'>
-		Generate<input type=input name='teamnumber' value=50>Teams.
-		<input type=submit value=Generate><br>
-                Users:<textarea name="ulist" rows="20" cols="20"><?php if (isset($ulist)) { echo $ulist; } ?></textarea>
+	    队名:<input type='test' name='prefix' value='team'>
+        <br>
+		生成<input type=input name='teamnumber' value=50>队伍.
+		<input type=submit value="生成"><br>
+                用户:<textarea name="ulist" rows="20" cols="20"><?php if (isset($ulist)) { echo $ulist; } ?></textarea>
 		<?php require_once("../include/set_post_key.php");?>
 	</form>
 
