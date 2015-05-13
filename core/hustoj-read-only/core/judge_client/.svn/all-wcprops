@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/zhblue/hustoj/!svn/ver/2279/trunk/trunk/core/judge_client
+END
+okcalls64.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/zhblue/hustoj/!svn/ver/2251/trunk/trunk/core/judge_client/okcalls64.h
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/zhblue/hustoj/!svn/ver/1397/trunk/trunk/core/judge_client/makefile
+END
+okcalls.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/zhblue/hustoj/!svn/ver/2112/trunk/trunk/core/judge_client/okcalls.h
+END
+judge_client.cc
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/zhblue/hustoj/!svn/ver/2279/trunk/trunk/core/judge_client/judge_client.cc
+END
+ncalls.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/zhblue/hustoj/!svn/ver/505/trunk/trunk/core/judge_client/ncalls.h
+END
+okcalls32.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/zhblue/hustoj/!svn/ver/2204/trunk/trunk/core/judge_client/okcalls32.h
+END
