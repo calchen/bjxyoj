@@ -20,10 +20,10 @@ include_once("../fckeditor/fckeditor.php") ;
 ?>
 <form method=POST action=news_add.php>
 
-<p align=left>Post a News</p>
-<p align=left>Title:<input type=text name=title size=71></p>
+<p align=left>发布新闻</p>
+<p align=left>标题:<input type=text name=title size=71></p>
 
-<p align=left>Content:<br>
+<p align=left>内容:<br>
 <?php
 $description = new FCKeditor('content') ;
 $description->BasePath = '../fckeditor/' ;
@@ -35,7 +35,7 @@ $description->Create() ;
 ?>
 </p>
 <?php require_once("../include/set_post_key.php");?>
-<input type=submit value=Submit name=submit>
+<input type=submit value=发布 name=submit>
 </div></form>
 <p>
 <?php require_once("../oj-footer.php");?>
