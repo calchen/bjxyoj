@@ -22,14 +22,18 @@ if ($prob_exist){?>
 [ <a href="newpost.php<?php if ($pid!=0 && $cid!=null) echo "?pid=".$pid."&cid=".$cid;
 else if ($pid!=0) echo "?pid=".$pid;
 else if ($cid!=0) echo "?cid=".$cid;?>
-">New Thread</a> ]</div>
+">发新帖</a> ]</div>
 <div style="float:left;text-align:left;font-size:80%">
-Location :
-<?php if ($cid!=null) echo "<a href=\"discuss.php?cid=".$cid."\">Contest ".$cid."</a>"; else echo "<a href=\"discuss.php\">MainBoard</a>";
+位置 :
+<?php
+if ($cid!=null)
+    echo "<a href=\"discuss.php?cid=".$cid."\">Contest ".$cid."</a>";
+else
+    echo "<a href=\"discuss.php\">主页</a>";
 if ($pid!=null && $pid!=0){
         $query="?pid=$pid";
         if($cid!=0) $query.="&cid=$cid";
-         echo " >> <a href=\"discuss.php".$query."\">Problem ".$pid."</a>";
+         echo " >> <a href=\"discuss.php".$query."\">问题 ".$pid."</a>";
 
 }
 ?>
@@ -63,12 +67,12 @@ $isadmin = isset($_SESSION['administrator']);
 <tr align=center class='toprow'>
         <td width="2%"><?php if ($isadmin) echo "<input type=checkbox>"; ?></td>
         <td width="3%"></td>
-        <td width="4%">Prob</td>
-        <td width="12%">Author</td>
-        <td width="46%">Title</td>
-        <td width="8%">Post Date</td>
-        <td width="16%">Last Reply</td>
-        <td width="3%">Re</td>
+        <td width="4%">问题</td>
+        <td width="12%">作者</td>
+        <td width="46%">标题</td>
+        <td width="8%">提问日期</td>
+        <td width="16%">最近回复</td>
+        <td width="3%">回帖数</td>
 </tr>
 <?php if ($rows_cnt==0) echo("<tr class=\"evenrow\"><td colspan=4></td><td style=\"text-align:center\">No thread here.</td></tr>");
 
