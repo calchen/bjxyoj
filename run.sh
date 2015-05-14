@@ -1,2 +1,3 @@
-sudo chmod -R 771 web
-sudo chown -R www-data web
+chmod -R 771 web
+chown -R www-data web
+chmod 770 web/upload
