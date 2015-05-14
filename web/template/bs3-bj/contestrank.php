@@ -40,6 +40,7 @@
             }
             ?>
         </center>
+        <center></center>
         <table id=rank>
             <thead>
             <tr class=toprow>
@@ -105,7 +106,7 @@
                     }
                     echo "</tr>\n";
                 }
-                echo "</tbody></table>";
+                echo "</tbody></table></center>";
                 ?>
     </div>
 
