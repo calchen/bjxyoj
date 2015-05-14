@@ -43,7 +43,7 @@
         <center>
         <table id=rank>
             <thead>
-            <tr class=toprow>
+            <tr class=toprow align="center">
                 <td class="{sorter:'false'}" width=5%>排名
                 <th style="text-align: center;width: 10%;">用户名</th>
                 <th style="text-align: center;width: 10%;">昵称</th>
