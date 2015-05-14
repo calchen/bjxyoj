@@ -1,0 +1,4363 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<fps version="1.1" url="http://code.google.com/p/freeproblemset/">
+	<generator name="HUSTOJ" url="http://code.google.com/p/hustoj/"/>
+	<item>
+<title><![CDATA[素MM]]></title>
+<time_limit><![CDATA[1]]></time_limit>
+<memory_limit><![CDATA[128]]></memory_limit>
+
+<description><![CDATA[<p><style type="text/css">p { margin-bottom: 0.21cm; }</style></p>
+<p style="text-indent: 0.74cm; margin-bottom: 0cm;">素数有很多神奇的性质，所以很美。我们知道一个日期将年、月、日按顺序连接在一起可以组成一个八位数，例如<font face="DejaVu Serif, serif">2011</font>年<font face="DejaVu Serif, serif">3</font>月<font face="DejaVu Serif, serif">6</font>日可以写成<font face="DejaVu Serif, serif">20110306</font>。我的某个<font face="DejaVu Serif, serif">MM</font>的生日组成的数是一个素数。偶尔我叫她素<font face="DejaVu Serif, serif">MM</font>，没人知道是啥意思，她自己也不知道。<font face="DejaVu Serif, serif">O(&cap;_&cap;)O</font>哈哈<font face="DejaVu Serif, serif">~</font>我心里可是真的美美的<font face="DejaVu Serif, serif">(⊙o⊙)</font>哦！</p>
+<p style="margin-bottom: 0cm;"><font face="DejaVu Serif, serif">	</font>嗯，什么？你的生日也是素数？你也想做&ldquo;素<font face="DejaVu Serif, serif">MM&rdquo;</font>或者&ldquo;素<font face="DejaVu Serif, serif">GG&rdquo;</font>？那好吧，不过我可是很小气的哦！只有你出生在<font face="DejaVu Serif, serif">1988</font>年或者<font face="DejaVu Serif, serif">1989</font>年我才让你做&ldquo;素<font face="DejaVu Serif, serif">MM&rdquo;</font>或&ldquo;素<font face="DejaVu Serif, serif">GG&rdquo;</font>。要不然，你把这两年里日期组成的数是素数的找出来也可以&mdash;&mdash;没准还带你到浙大去&ldquo;旅游&rdquo;呢！</p>
+<p></p>]]></description>
+<input><![CDATA[<p><style type="text/css">p { margin-bottom: 0.21cm; }</style></p>
+<p style="margin-bottom: 0cm;">无</p>
+<p></p>]]></input> 
+<output><![CDATA[<p><style type="text/css">p { margin-bottom: 0.21cm; }</style></p>
+<p style="margin-bottom: 0cm;"><font face="DejaVu Serif, serif">1988</font>年与<font face="DejaVu Serif, serif">1989</font>年，这两年里的日期所组成的素数。每个素数占一行。</p>
+<p></p>]]></output>
+<sample_input><![CDATA[]]></sample_input>
+<sample_output><![CDATA[19880101
+19880111
+19880117
+19880129
+19880221
+……]]></sample_output>
+<test_input><![CDATA[1]]></test_input>
+<test_output><![CDATA[19880101
+19880111
+19880117
+19880129
+19880221
+19880317
+19880321
+19880323
+19880417
+19880501
+19880519
+19880521
+19880603
+19880629
+19880711
+19880719
+19880723
+19880807
+19880911
+19881019
+19881101
+19881227
+19881229
+19890103
+19890107
+19890307
+19890413
+19890503
+19890509
+19890517
+19890523
+19890707
+19890713
+19890817
+19890911
+19890919
+19891007
+19891019
+19891031
+19891103
+19891117
+19891127
+19891213
+19891229
+]]></test_output>
+<hint><![CDATA[<p><style type="text/css">p { margin-bottom: 0.21cm; }</style></p>
+<p style="margin-bottom: 0cm;">&ldquo;&hellip;&hellip;&rdquo;代表后面还有素数没有输出。你输出时也要将后面的素数输出。</p>
+<p><style type="text/css">p { margin-bottom: 0.21cm; }
+
+
+	
+	
+	
+	
+
+
+“……”代表后面还有素数没有输出。你输出时也要将后面的素数输出。</style></p>]]></hint>
+<source><![CDATA[浙江传媒学院2011校赛]]></source>
+<solution language="C"><![CDATA[#include<stdio.h>
+#include<math.h>
+void shu(int s)
+{
+	int i=0,f=0;
+	for(i=2;i<4460;i++)
+	{
+		if(0==s%i)
+			f=1;
+	}
+	if(0==f)
+		printf("%d\n",s);
+	f=0;
+}
+int monthdays(int month,int year)
+{
+	switch(month)
+	{
+	case 1:
+	case 3:
+	case 5:
+	case 7:
+	case 8:
+	case 10:
+	case 12:
+		return 31;
+	case 4:
+	case 6:
+	case 9:
+	case 11:
+		return 30;
+	default:break;
+	}
+	if(year==1988&&month==2)
+		return 29;
+	else
+		return 28;
+}
+
+int main()
+{
+	int a=0,y=1988,m[13]={0,1,2,3,4,5,6,7,8,9,10,11,12},d[32],i,j,k,f=0;
+	for(i=1;i<=31;i++)
+	{
+		d[i]=i;
+	}
+	for(y=1988;y<=1989;y++)
+	{
+	for(i=1;i<13;i++)
+	{
+		j=monthdays(m[i],y);
+		for(k=1;k<=j;k++)
+		{
+			a=10000*y+100*m[i]+d[k];
+			shu(a);
+		}
+	}
+	}
+	return 0;
+}
+
+]]></solution>
+</item>
+<item>
+<title><![CDATA[删除嵌套注释]]></title>
+<time_limit><![CDATA[1]]></time_limit>
+<memory_limit><![CDATA[128]]></memory_limit>
+
+<description><![CDATA[<p><style type="text/css">p { margin-bottom: 0.21cm; }</style></p>
+<p style="margin-bottom: 0cm;">大家在<font face="DejaVu Serif, serif">C</font>语言课程当中一定接触过注释。注释主要是用来表明程序用意的，不作为程序编译的一部分。<font face="DejaVu Serif, serif">C</font>语言当中使用&ldquo;<font face="DejaVu Serif, serif">/*&rdquo;</font>和&ldquo;<font face="DejaVu Serif, serif">*/&rdquo;</font>来标记注释的。&ldquo;<font face="DejaVu Serif, serif">/*&rdquo;</font>和&ldquo;<font face="DejaVu Serif, serif">*/&rdquo;</font>之间的部分可以标注当前程序的用意，例如以下<font face="DejaVu Serif, serif">C</font>语言程序：</p>
+<p style="margin-left: 0.74cm; text-indent: 0.74cm; margin-bottom: 0cm;"><font face="DejaVu Serif, serif">/*</font>将要定义一个整数<font face="DejaVu Serif, serif">*/</font></p>
+<p style="margin-left: 0.74cm; text-indent: 0.74cm; margin-bottom: 0cm;"><font face="DejaVu Serif, serif">int i;</font></p>
+<p style="margin-bottom: 0cm;">然而，注释当中是不可以嵌套注释的，例如以下程序所用到的注释就是非法的：</p>
+<p style="margin-left: 0.74cm; text-indent: 0.74cm; margin-bottom: 0cm;"><font face="DejaVu Serif, serif">/*</font>将要定义一个整数<font face="DejaVu Serif, serif">/*</font>这个整数是用来作为计数器的<font face="DejaVu Serif, serif">*/*/</font></p>
+<p style="margin-left: 0.74cm; text-indent: 0.74cm; margin-bottom: 0cm;"><font face="DejaVu Serif, serif">int i;</font></p>
+<p></p>]]></description>
+<input><![CDATA[<p><style type="text/css">p { margin-bottom: 0.21cm; }</style></p>
+<p style="margin-bottom: 0cm;"><font face="DejaVu Serif, serif">	</font>一段写好的程序，其中可能含有注释的嵌套。（为简单起见，测试数据中不包含空行。）注释一律独立成行（也就是说一行当中不同时包含需要编译的代码和注释，也不会同时包含多余一个的完整注释），例如以下两个代码是不出现的：</p>
+<p style="margin-bottom: 0cm;">情况<font face="DejaVu Serif, serif">1</font></p>
+<p style="margin-bottom: 0cm;"><font face="DejaVu Serif, serif">		int a = 0;		/*</font>定义<font face="DejaVu Serif, serif">*/</font></p>
+<p style="margin-bottom: 0cm;">情况<font face="DejaVu Serif, serif">2</font></p>
+<p style="margin-bottom: 0cm;"><font face="DejaVu Serif, serif">		int a = 0;		/*/*</font>非法<font face="DejaVu Serif, serif">*/</font>注释<font face="DejaVu Serif, serif">*/		/*</font>合法注释<font face="DejaVu Serif, serif">*/</font></p>
+<p style="margin-bottom: 0cm;"><font face="DejaVu Serif, serif">	</font>现在给你一段写好的程序，请你开发一个新的编译辅助工具将其中非法的注释整个删除。</p>
+<p></p>]]></input> 
+<output><![CDATA[<p><style type="text/css">p { margin-bottom: 0.21cm; }</style></p>
+<p style="margin-bottom: 0cm;">删除非法注释后的代码。</p>
+<p></p>]]></output>
+<sample_input><![CDATA[#include <stdio.h>
+int main()
+{
+    /*int a;
+    /*printf("%d",&a);*/*/
+return 0;
+/*返回*/
+}]]></sample_input>
+<sample_output><![CDATA[#include <stdio.h>
+int main()
+{
+return 0;
+/*返回*/
+}]]></sample_output>
+<hint><![CDATA[]]></hint>
+<source><![CDATA[浙江传媒学院2011校赛]]></source>
+<solution language="C"><![CDATA[#include<stdio.h>
+
+int main()
+{
+	char c,d,s[1000];
+	int ok,note=0,k=0,lnum=0,rnum=0,nsp=0;
+	while((c=getchar())!=EOF)
+	{
+		if(!note&&c!='/'&&c!=' ')
+		{
+			for(int i=0;i<nsp;i++)
+				printf(" ");
+			nsp=0;
+			printf("%c",c);
+		}
+		else if(!note&&c==' ')
+			nsp++;
+		else if(!note&&c=='/')
+		{
+			d=getchar();
+			if(d=='*')
+			{
+				nsp=0;
+				lnum++;
+				ok=1;
+				note=1;
+				s[k++]=c;
+				s[k++]=d;
+			}
+			else
+			{
+				for(int i=0;i<nsp;i++)
+					printf(" ");
+				nsp=0;
+				printf("%c%c",c,d);
+			}
+		}
+		else if(note&&c=='/')
+		{
+			d=getchar();
+			if(d=='*')
+			{
+				lnum++;
+				ok=0;
+			}
+			s[k++]=c;
+			s[k++]=d;
+		}
+		else if(note&&c!='*')
+			s[k++]=c;
+		else if(note&&c=='*')
+		{
+			d=getchar();
+			s[k++]=c;
+			s[k++]=d;
+			if(d=='/')
+			{
+				rnum++;
+				if(lnum==rnum)
+				{
+					note=0;
+					s[k]='\0';
+					if(ok)
+						printf("%s",s);
+					else
+					{
+						s[0]='\0';
+						getchar();
+					}
+					k=0;
+				}
+			}
+		}
+	}
+	return 0;
+}]]></solution>
+</item>
+<item>
+<title><![CDATA[区间交交]]></title>
+<time_limit><![CDATA[1]]></time_limit>
+<memory_limit><![CDATA[128]]></memory_limit>
+
+<description><![CDATA[<p><style type="text/css">p { margin-bottom: 0.21cm; }</style></p>
+<p align="CENTER" style="margin-bottom: 0cm;"><font color="#000000"><font face="黑体, SimHei"><font size="6" style="font-size: 22pt;"><b>念奴娇</b></font></font><font face="黑体, SimHei"><font size="6" style="font-size: 22pt;"><b>&middot;</b></font></font><font face="黑体, SimHei"><font size="6" style="font-size: 22pt;"><b>赤壁怀古</b></font></font></font></p>
+<p align="CENTER" style="margin-bottom: 0cm;"></p>
+<p align="CENTER" style="margin-bottom: 0cm; line-height: 0.64cm;"><font color="#000000"><b>大江东去</b></font><font face="DejaVu Serif, serif"><font color="#000000"><font face="Arial, sans-serif"><b>,</b></font></font></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm; line-height: 0.64cm;"><font color="#000000"><b>浪淘尽，</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm; line-height: 0.64cm;"><font color="#000000"><b>千古风流人物。</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm; line-height: 0.64cm;"><font color="#000000"><b>故垒西边，</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm; line-height: 0.64cm;"><font color="#000000"><b>人道是，</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm; line-height: 0.64cm;"><font color="#000000"><b>三国周郎赤壁。</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm; line-height: 0.64cm;"><font color="#000000"><b>乱石穿空，</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm; line-height: 0.64cm;"><font color="#000000"><b>惊涛拍岸，</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm; line-height: 0.64cm;"><font color="#000000"><b>卷起千堆雪。</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm; line-height: 0.64cm;"><font color="#000000"><b>江山如画，</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm; line-height: 0.64cm;"><font color="#000000"><b>一时多少豪杰。</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm; line-height: 0.64cm;"></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm;"><font color="#000000"><b>遥想公瑾当年，</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm;"><font color="#000000"><b>小乔初嫁了，</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm;"><font color="#000000"><b>雄姿英发。</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm;"><font color="#000000"><b>羽扇纶巾，</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm;"><font color="#000000"><b>谈笑间，</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm;"><font color="#000000"><b>樯橹灰飞烟灭。</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm;"><font color="#000000"><b>故国神游，</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm;"><font color="#000000"><b>多情应笑我，</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm;"><font color="#000000"><b>早生华发。</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm;"><font color="#000000"><b>人生如梦，</b></font></p>
+<p align="CENTER" style="text-indent: 0.74cm; margin-bottom: 0cm;"><font color="#000000"><b>一尊还酹江月。</b></font></p>
+<p style="text-indent: 0.74cm; margin-bottom: 0cm;"></p>
+<p style="margin-bottom: 0cm;"><font face="DejaVu Serif, serif">	</font>刘备今年终于进入浙江传媒学院了，想当年在高中的那场数学之战真是惊心动魄。为了能够顺利借到东风，诸葛亮将两组区间放在一起。将它们共同的部分提取出来，然后向上苍祷告。于是玉皇大帝就命令风神助卧龙一臂之力了。</p>
+<p style="margin-bottom: 0cm;"><font face="DejaVu Serif, serif">	</font>如今，刘备问卧龙，曰：&ldquo;军师，<font face="DejaVu Serif, serif">How long </font>你提取出的区间？&rdquo;卧龙笑而不语，羽扇一扇便说，他的学生可以告诉刘备！你可以将这两组区间相交的部分在数轴上线段的长度告诉刘备么？</p>
+<p></p>]]></description>
+<input><![CDATA[<p><style type="text/css">p { margin-bottom: 0.21cm; }</style></p>
+<p style="text-indent: 0.74cm; margin-bottom: 0cm;">数据只有两行代表当年诸葛亮用来提取的两组区间。每行的第一个自然数<font face="DejaVu Serif, serif">N (0&lt;=N&lt;100)</font>表示该组区间的数量，接着<font face="DejaVu Serif, serif">N</font>对小数<font face="DejaVu Serif, serif">si,ei</font>表示区间的开始和结束。</p>
+<p style="margin-bottom: 0cm;"></p>
+<p></p>]]></input> 
+<output><![CDATA[<p><style type="text/css">p { margin-bottom: 0.21cm; }</style></p>
+<p style="margin-bottom: 0cm;">输出区间交集的长度输出来，结果保留三位小数。</p>
+<p></p>]]></output>
+<sample_input><![CDATA[2 1 10 14 17
+3 3 7 9 15 16 18]]></sample_input>
+<sample_output><![CDATA[7.000]]></sample_output>
+<test_input><![CDATA[46 131724106.508806 201231096.598321 234187227.206008 333228681.431980 390555798.370370 717518547.539879 771692862.199075 1378941579.339828 1418178038.071425 1424437197.199977 1491468419.912861 1584539269.708643 1743182535.973198 1844434325.081014 1943599115.944980 2319680193.707237 2852253602.765597 3041039231.014442 3261307356.698791 3622797441.194026 3853399370.386280 3995692063.365864 4029915707.700229 4059069115.029474 4176972878.398054 4272965003.077582 4472347750.114385 5047675116.006077 5784460677.864898 5793814985.541653 6043079337.581737 6212488290.337852 6770505475.553802 6859902465.683757 7000241283.046842 7185809818.167611 7314058505.910504 7813632378.989031 8111024078.155075 8506446536.107050 8594876662.006594 8887352117.361574 8950425417.574926 9214938438.302601 9429478639.197498 9500490300.749224 10010480759.707752 10051673488.658745 10075952717.424797 10397824761.157713 10427496600.385311 10512696376.777552 10568058759.166994 10710766637.337519 10861437650.378849 10928071006.358488 11900835336.736391 12511779282.936815 13662477486.784081 13697069831.957840 13931369836.764750 15385326010.830500 15784078841.842596 16042765248.824770 16915742598.637543 18923925498.090656 19759595472.976818 19835198495.911751 19940937859.534908 20021697744.316029 21105153538.857281 21297035266.545677 21389474328.977455 21411129176.772457 22346533433.941833 25672291043.432011 27590042038.226234 28919852524.674500 30829553367.692589 37079129061.441917 39354229436.527580 54279564767.309151 57659456690.914322 57930394302.096382 61160475544.195068 62261652250.074303 70004341192.194092 107623603079.821564 111854661652.247269 353313261270.740601 380160014532.344116 2844554402702.466797
+13 633043992.326108 1902019091.806814 2233535761.692103 4889664975.518219 4896896253.504444 5489249603.827067 6450153268.406549 6573894984.462693 7831816129.813346 9927458828.649727 10014067778.023300 11677704320.421587 11839501451.132021 12024069199.665024 14181984003.030243 16236352237.000731 16800634865.344017 18437411382.298145 18597697888.475941 19464992311.837418 22286293085.342747 27219957530.832043 32175670831.610428 38971120630.934151 40659675351.264847 84578089342.568680
+]]></test_input>
+<test_output><![CDATA[45269827282.325
+]]></test_output>
+<hint><![CDATA[<p><style type="text/css">p { margin-bottom: 0.21cm; }</style></p>
+<p style="margin-bottom: 0cm;"><font face="DejaVu Serif, serif">Sample</font>中的结果是这样求出的：<font face="DejaVu Serif, serif">(7-3) + (10-9) + (15-14) + (17-16) = 7</font>。</p>
+<p style="margin-bottom: 0cm;"></p>
+<p></p>]]></hint>
+<source><![CDATA[浙江传媒学院2011校赛]]></source>
+<solution language="C"><![CDATA[#include<stdio.h>
+
+struct block
+{
+	double a;
+	double b;
+}x[100],y[100];
+
+int main()
+{
+	int n,m,i,j;
+	double l=0;
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+		scanf("%lf%lf",&x[i].a,&x[i].b);
+	scanf("%d",&m);
+	for(i=0;i<m;i++)
+		scanf("%lf%lf",&y[i].a,&y[i].b);
+	for(i=0;i<n;i++)
+		for(j=0;j<m;j++)
+		{
+			if(x[i].a<=y[j].a&&x[i].b>=y[j].a&&x[i].b<=y[j].b)
+				l+=x[i].b-y[j].a;
+			else if(x[i].a>=y[j].a&&x[i].a<=y[j].b&&x[i].b>=y[j].b)
+				l+=y[j].b-x[i].a;
+			else if(x[i].a>=y[j].a&&x[i].b<=y[j].b)
+				l+=x[i].b-x[i].a;
+			else if(x[i].a<=y[j].a&&x[i].b>=y[j].b)
+				l+=y[j].b-y[j].a;
+		}
+	printf("%.3lf\n",l);
+	return 0;
+}]]></solution>
+</item>
+<item>
+<title><![CDATA[子网掩码]]></title>
+<time_limit><![CDATA[1]]></time_limit>
+<memory_limit><![CDATA[128]]></memory_limit>
+
+<description><![CDATA[<p>子网掩码计算方法 <br />
+&nbsp;<br />
+子网掩码是用来判断任意两台计算机的IP地址是否属于同一子网络的根据。</p>
+<p>最为简单的理解就是两台计算机各自的IP地址与子网掩码进行AND运算后，如果得出的结果是相同的，则说明这两台计算机是处于同一个子网络上的，可以进行直接的通讯。就这么简单。</p>
+<p>请看以下示例：</p>
+<p>运算演示之一：aa <br />
+I P 地址　 192.168.0.1 <br />
+子网掩码　 255.255.255.0 <br />
+AND运算</p>
+<p>转化为二进制进行运算： <br />
+I P 地址　11010000.10101000.00000000.00000001 <br />
+子网掩码　11111111.11111111.11111111.00000000 <br />
+AND运算</p>
+<p>　　　　　11010000.10101000.00000000.00000000 <br />
+转化为十进制后为：</p>
+<p>　　　　　　192.168.0.0</p>
+<p><br />
+运算演示之二： <br />
+I P 地址　 192.168.0.254 <br />
+子网掩码　 255.255.255.0 <br />
+AND运算</p>
+<p>转化为二进制进行运算： <br />
+I P 地址　11010000.10101000.00000000.11111110 <br />
+子网掩码　11111111.11111111.11111111.00000000 <br />
+AND运算</p>
+<p>　　　　　11010000.10101000.00000000.00000000 <br />
+转化为十进制后为：</p>
+<p>　　　　　　192.168.0.0</p>
+<p><br />
+运算演示之三： <br />
+I P 地址　 192.168.0.4 <br />
+子网掩码　 255.255.255.0 <br />
+AND运算</p>
+<p>转化为二进制进行运算： <br />
+I P 地址　11010000.10101000.00000000.00000100 <br />
+子网掩码　11111111.11111111.11111111.00000000 <br />
+AND运算</p>
+<p>　　　　　11010000.10101000.00000000.00000000 <br />
+转化为十进制后为：</p>
+<p>　　　　　　192.168.0.0</p>
+<p><br />
+通过以上对三组计算机IP地址与子网掩码的AND运算后，我们可以看到它运算结果是一样的。均为192.168.0.0</p>
+<p>　　所以计算机就会把这三台计算机视为是同一子网络。</p>]]></description>
+<input><![CDATA[<p>第一行是本机IP地址</p>
+<p>第二行是子网掩码</p>
+<p>第三行整数N，表示后面有N个IP地址</p>
+<p>第1个IP地址</p>
+<p>......</p>
+<p>第N个IP地址</p>]]></input> 
+<output><![CDATA[<p>计算并输出N个IP地址是否与本机在同一子网内。</p>
+<p>对于在同一子网的输出&quot;INNER&quot;</p>
+<p>对于在不同子网的输出&ldquo;OUTER&rdquo;</p>]]></output>
+<sample_input><![CDATA[192.168.0.1
+255.255.255.0
+3
+192.168.0.2
+192.168.0.254
+192.168.1.2
+]]></sample_input>
+<sample_output><![CDATA[INNER
+INNER
+OUTER]]></sample_output>
+<test_input><![CDATA[1.1.1.1
+224.0.0.0
+3
+31.1.1.1
+32.1.1.1
+33.1.1.1
+]]></test_input>
+<test_output><![CDATA[INNER
+OUTER
+OUTER
+]]></test_output>
+<test_input><![CDATA[192.168.0.1
+255.192.0.0
+1009
+173.69.83.33
+223.143.11.80
+170.11.211.10
+205.165.8.62
+222.41.39.168
+254.82.229.241
+179.118.19.238
+104.201.44.23
+15.127.56.238
+16.68.63.187
+80.20.198.30
+186.207.92.153
+248.132.66.248
+42.250.171.173
+50.84.134.73
+144.233.92.20
+16.191.200.185
+157.61.100.171
+57.90.235.24
+132.201.42.145
+200.225.101.243
+220.18.162.16
+103.41.89.247
+20.182.12.36
+118.212.222.21
+19.67.193.77
+157.173.102.34
+120.144.180.65
+115.27.53.81
+46.216.97.149
+2.187.141.22
+114.153.59.233
+111.27.254.131
+94.193.209.252
+112.56.32.232
+201.213.43.61
+241.97.143.32
+58.241.182.60
+140.234.41.215
+9.123.253.160
+215.32.167.199
+57.199.89.40
+237.244.8.157
+215.12.187.28
+133.114.105.139
+197.126.180.237
+127.83.105.222
+48.137.206.103
+159.9.170.119
+161.216.208.4
+245.144.206.216
+24.206.156.139
+245.157.65.7
+213.187.28.246
+238.86.16.134
+86.32.223.222
+155.105.246.198
+24.32.51.132
+42.47.77.87
+188.251.234.195
+53.28.178.55
+82.233.192.42
+141.123.180.199
+76.1.89.231
+107.81.174.131
+114.225.9.156
+18.87.243.206
+84.222.147.138
+251.71.194.79
+49.131.122.190
+254.48.135.75
+49.225.51.156
+51.226.33.165
+197.43.66.215
+131.55.167.215
+23.59.98.19
+131.38.98.180
+169.221.115.169
+14.251.245.63
+221.42.220.17
+13.254.183.211
+143.246.41.138
+211.49.208.250
+43.202.193.159
+102.67.153.95
+210.92.225.218
+133.168.25.254
+9.117.0.42
+108.96.149.224
+186.251.88.191
+200.143.45.41
+79.244.90.239
+208.182.57.244
+26.163.20.27
+88.160.77.46
+46.98.23.77
+109.154.194.172
+69.40.150.28
+180.15.183.196
+133.159.46.190
+4.14.32.128
+108.108.43.98
+78.70.68.242
+31.183.185.71
+53.167.0.200
+5.249.159.199
+106.243.183.212
+152.80.125.162
+142.234.247.188
+106.210.73.138
+171.204.159.30
+22.143.119.67
+246.57.200.59
+79.35.39.10
+196.199.92.156
+44.76.11.61
+25.207.188.66
+20.223.81.226
+129.110.142.210
+246.224.101.186
+168.101.173.209
+83.188.97.70
+194.53.130.218
+61.207.194.161
+222.224.235.243
+71.45.217.202
+116.22.187.196
+139.70.95.209
+75.46.151.177
+48.190.143.204
+18.229.141.145
+80.60.183.50
+156.43.186.47
+96.44.210.132
+111.244.113.122
+210.211.187.248
+102.39.115.76
+218.232.42.80
+107.36.57.155
+245.19.108.10
+69.188.115.218
+24.241.216.186
+12.162.227.77
+60.245.60.23
+103.21.1.196
+209.107.64.233
+105.67.72.84
+129.229.189.8
+230.75.146.205
+235.177.215.40
+120.198.36.194
+143.177.65.159
+63.110.57.110
+59.251.166.157
+205.129.4.66
+31.80.38.98
+131.42.128.105
+66.152.192.7
+170.150.133.53
+206.89.24.27
+115.87.80.211
+189.125.20.198
+32.150.208.78
+16.131.12.4
+31.169.231.76
+143.140.66.200
+227.87.199.252
+133.209.91.153
+107.117.109.25
+80.124.1.153
+124.228.199.163
+177.51.224.244
+104.110.218.84
+136.136.171.240
+237.42.30.13
+208.132.219.26
+90.243.236.219
+88.109.102.97
+83.106.154.34
+65.64.128.169
+68.31.62.138
+203.49.190.229
+209.241.193.74
+131.142.120.248
+8.46.101.131
+159.116.198.140
+163.222.158.92
+139.89.230.237
+226.13.136.147
+78.118.37.145
+91.179.254.9
+86.101.216.104
+13.243.58.89
+124.75.207.87
+103.232.228.108
+44.158.34.165
+13.215.19.33
+75.64.172.105
+177.112.125.63
+120.78.128.58
+155.189.174.3
+47.86.69.226
+42.129.98.48
+5.44.137.88
+183.223.241.212
+25.171.128.61
+214.177.102.115
+19.211.222.176
+113.25.230.159
+42.28.1.150
+85.21.95.91
+182.57.37.42
+245.78.192.124
+40.7.34.166
+58.199.158.35
+254.125.38.1
+199.124.233.51
+222.167.61.128
+139.215.13.238
+170.138.114.199
+46.30.99.19
+231.140.13.248
+2.239.76.49
+59.18.157.108
+100.215.221.80
+105.216.49.157
+103.176.191.19
+113.176.241.113
+180.26.222.8
+26.34.62.82
+234.254.114.172
+81.215.142.12
+73.120.131.54
+21.128.212.221
+86.5.25.101
+2.88.117.11
+47.45.85.27
+45.182.127.216
+22.45.85.188
+161.71.61.186
+87.211.129.112
+108.67.181.24
+88.128.99.228
+78.35.66.236
+148.75.215.190
+147.73.2.9
+78.160.104.238
+93.199.194.242
+114.240.63.138
+217.121.118.221
+8.83.53.187
+160.16.163.157
+194.6.132.215
+11.67.130.236
+219.34.65.10
+39.221.98.40
+116.29.179.139
+68.211.2.29
+153.142.84.154
+42.56.147.148
+94.245.64.112
+132.142.199.72
+123.17.35.160
+168.111.196.166
+153.16.156.38
+210.22.60.7
+170.200.58.178
+201.61.242.66
+0.205.187.224
+193.246.144.111
+107.132.48.252
+88.161.62.81
+46.58.70.135
+195.5.147.226
+167.196.128.63
+195.133.31.71
+87.79.150.235
+245.102.233.46
+33.78.225.59
+201.64.214.119
+208.223.97.13
+42.161.24.246
+106.80.122.21
+147.229.229.228
+53.229.154.228
+71.115.187.32
+187.196.72.13
+169.4.79.113
+139.71.190.62
+85.83.157.168
+212.61.227.6
+234.62.254.174
+217.226.101.241
+80.78.7.167
+147.174.195.86
+115.242.3.24
+35.101.68.174
+63.119.254.9
+62.49.245.90
+36.51.1.143
+2.111.143.120
+169.181.39.88
+125.212.63.224
+48.169.214.1
+109.187.187.59
+38.154.191.33
+244.48.245.73
+197.11.82.40
+29.1.170.79
+22.126.215.132
+143.76.41.159
+237.224.12.92
+65.33.240.124
+250.157.163.181
+130.199.241.65
+118.8.139.98
+67.17.96.213
+62.140.59.79
+33.13.218.211
+206.89.32.20
+147.224.216.248
+245.74.191.218
+186.151.31.195
+109.195.62.234
+71.153.198.130
+78.70.227.26
+225.183.65.4
+107.254.12.50
+142.190.226.35
+32.232.56.94
+143.50.13.193
+144.46.115.156
+202.159.95.183
+14.8.76.163
+193.216.74.157
+56.92.27.243
+52.163.13.197
+182.9.65.230
+253.103.110.28
+82.164.183.21
+205.136.25.108
+142.180.151.188
+64.134.195.113
+15.170.11.232
+138.82.60.114
+195.78.182.179
+134.179.150.75
+205.100.157.73
+2.218.241.4
+167.192.114.32
+157.189.189.93
+149.188.202.252
+158.12.51.250
+88.85.221.33
+4.128.9.232
+229.165.250.126
+167.156.193.60
+230.56.75.236
+81.164.7.176
+54.91.165.95
+8.34.131.75
+225.215.20.115
+199.138.26.252
+210.193.226.4
+240.224.96.24
+137.99.100.154
+11.30.254.247
+38.132.110.221
+65.109.166.130
+10.134.109.21
+120.42.38.242
+15.246.192.239
+152.60.6.209
+185.176.234.101
+31.161.203.216
+36.142.67.69
+125.0.161.26
+165.85.99.37
+241.242.224.142
+127.218.148.30
+78.23.213.70
+143.176.159.236
+22.151.95.28
+236.35.9.66
+232.7.125.15
+27.25.105.5
+210.201.4.192
+144.164.63.75
+2.82.180.241
+37.111.12.113
+199.1.229.171
+10.116.57.62
+7.71.32.229
+143.139.0.168
+220.55.28.66
+247.41.129.253
+26.239.101.68
+232.85.28.58
+30.173.239.220
+91.93.12.199
+243.220.138.80
+150.215.23.208
+107.84.204.183
+140.25.145.34
+80.137.2.55
+139.246.152.145
+176.167.212.104
+206.137.164.82
+49.77.251.183
+163.155.182.247
+78.101.57.113
+127.100.210.253
+52.77.86.229
+101.253.153.141
+108.136.220.64
+29.84.212.244
+128.24.3.147
+64.82.225.2
+173.249.20.65
+131.106.184.133
+101.193.237.116
+117.250.250.237
+141.223.241.196
+109.10.15.90
+6.134.250.151
+107.23.15.8
+101.51.144.89
+32.119.97.219
+85.108.43.67
+132.225.129.54
+124.213.109.164
+73.73.182.147
+28.186.152.8
+232.42.59.92
+214.99.72.182
+109.68.155.63
+116.34.212.238
+136.12.30.31
+60.206.65.145
+166.111.209.166
+44.167.212.24
+139.52.123.3
+38.212.165.165
+96.244.44.253
+240.51.21.145
+147.93.130.230
+126.74.1.243
+113.75.25.37
+212.175.101.232
+44.68.22.53
+245.181.209.171
+58.113.84.93
+162.64.17.35
+132.149.196.113
+167.123.99.184
+168.199.13.186
+239.173.211.121
+14.175.244.18
+201.63.110.151
+70.26.0.188
+147.145.118.73
+71.21.220.60
+143.100.182.81
+175.76.16.81
+48.64.24.153
+102.200.0.8
+29.145.172.145
+165.98.237.136
+239.212.31.39
+89.96.238.36
+76.210.191.47
+29.124.243.63
+229.149.106.40
+115.167.101.213
+125.114.33.61
+214.200.128.185
+8.5.232.188
+251.189.35.49
+73.21.153.223
+220.181.79.165
+41.3.57.103
+63.203.108.139
+24.40.163.4
+204.67.75.139
+195.98.49.253
+191.164.8.188
+117.11.88.70
+180.16.6.119
+206.84.252.207
+64.75.199.222
+250.43.6.53
+98.229.116.25
+136.96.164.28
+138.143.189.134
+18.51.132.106
+184.160.189.181
+241.88.190.142
+48.196.50.252
+95.4.171.62
+226.46.221.182
+138.38.33.33
+171.215.107.110
+0.170.209.245
+112.187.139.73
+31.127.209.68
+126.30.243.52
+71.133.13.4
+39.133.186.1
+122.220.23.102
+145.154.166.227
+5.60.11.167
+164.223.81.206
+208.103.20.112
+29.100.174.172
+113.36.156.90
+149.201.70.110
+221.9.182.106
+231.48.245.161
+74.217.76.230
+172.94.179.58
+41.123.189.128
+69.5.82.29
+16.68.41.83
+177.220.98.156
+208.149.17.163
+35.120.173.190
+106.126.32.82
+195.238.207.51
+83.62.224.187
+201.130.204.145
+166.29.173.233
+222.100.2.221
+118.90.56.0
+166.199.128.224
+79.33.142.40
+150.218.11.69
+37.230.116.22
+151.167.155.44
+190.97.198.71
+160.195.140.124
+41.67.67.16
+195.157.209.239
+70.164.221.75
+250.170.88.129
+224.2.128.156
+183.201.123.165
+144.116.158.239
+191.12.56.7
+160.249.113.72
+218.78.234.215
+109.106.235.66
+201.118.47.200
+33.83.62.244
+125.175.21.149
+123.83.146.102
+242.233.79.153
+160.40.195.85
+230.209.179.185
+182.216.31.204
+244.102.165.18
+177.85.128.75
+94.245.205.182
+212.203.167.239
+40.176.184.76
+6.190.78.152
+36.237.55.24
+191.139.196.145
+44.165.195.174
+188.149.211.68
+126.236.139.217
+205.106.80.44
+230.216.23.85
+66.139.93.201
+20.16.47.119
+225.131.111.214
+36.141.222.103
+204.217.170.30
+115.248.15.199
+228.153.23.111
+109.211.28.102
+78.71.249.160
+82.5.3.177
+56.74.75.48
+112.155.56.149
+207.180.25.72
+179.157.222.150
+99.134.136.47
+113.220.221.157
+155.112.146.81
+27.95.168.252
+103.68.131.175
+77.197.19.156
+121.85.118.179
+60.17.44.159
+118.118.204.233
+127.20.197.77
+97.254.99.184
+54.3.145.124
+172.186.137.251
+31.149.55.253
+181.240.29.86
+122.37.218.40
+6.110.79.84
+247.124.122.32
+143.53.10.160
+232.242.191.44
+29.10.89.136
+92.16.180.191
+92.235.206.244
+2.164.112.247
+202.227.208.38
+171.52.201.149
+84.169.116.169
+3.47.29.87
+28.208.2.44
+37.94.142.241
+183.205.251.238
+128.87.139.91
+151.60.109.144
+84.62.142.64
+155.182.53.88
+0.129.241.64
+162.4.162.221
+21.13.171.13
+61.146.30.224
+25.123.111.199
+149.33.114.90
+159.145.130.154
+80.126.1.68
+67.220.251.87
+190.39.186.152
+6.111.31.155
+189.2.214.127
+197.150.10.237
+254.235.154.187
+77.56.225.33
+175.138.202.26
+28.246.243.69
+170.72.150.224
+13.119.154.15
+31.155.101.61
+117.45.104.8
+184.172.100.165
+116.70.218.231
+121.92.133.95
+213.125.103.209
+154.164.106.217
+50.42.130.78
+86.213.242.45
+50.225.215.106
+134.105.18.143
+242.141.40.134
+50.99.201.171
+41.109.180.109
+9.155.212.148
+112.245.232.140
+67.232.36.54
+159.188.71.239
+16.136.107.39
+147.104.38.123
+226.153.68.71
+206.176.39.192
+154.215.69.23
+161.156.28.199
+149.72.50.174
+153.195.223.211
+238.213.253.232
+69.210.252.201
+182.186.212.25
+154.31.148.201
+82.74.151.217
+214.87.59.86
+17.76.252.209
+12.247.251.127
+75.157.23.62
+138.169.131.50
+225.118.100.81
+230.67.129.25
+188.211.6.129
+57.76.87.127
+25.37.90.132
+68.62.25.17
+44.218.128.6
+76.137.37.49
+109.171.205.127
+53.118.86.155
+188.128.14.190
+177.149.242.181
+212.52.158.139
+204.9.122.230
+70.253.25.49
+183.206.226.210
+156.186.162.167
+224.213.95.73
+90.108.0.155
+51.3.212.87
+123.154.63.29
+74.66.254.132
+120.214.210.34
+51.85.21.54
+228.97.148.79
+203.34.106.251
+11.173.80.141
+245.173.146.34
+215.26.103.123
+87.75.103.204
+129.87.22.84
+186.144.204.205
+62.142.232.230
+63.44.29.213
+243.221.36.77
+87.179.68.108
+131.106.54.231
+33.185.165.83
+164.61.105.157
+241.23.5.103
+87.48.251.239
+98.190.120.92
+163.173.247.29
+44.101.154.123
+48.199.243.67
+234.171.18.79
+228.52.126.79
+204.131.150.235
+203.130.113.152
+63.160.127.234
+0.135.107.67
+72.29.177.182
+137.226.126.112
+121.95.62.102
+124.115.198.236
+111.69.19.192
+69.129.169.98
+135.33.24.123
+102.243.165.227
+30.156.18.222
+222.109.127.72
+231.76.187.56
+216.46.222.172
+29.251.105.48
+39.120.217.15
+205.12.4.249
+117.176.173.156
+171.227.17.247
+239.197.169.78
+26.238.24.58
+158.251.22.95
+71.246.166.62
+125.173.144.150
+67.169.15.125
+116.92.66.185
+173.118.132.218
+46.86.34.204
+90.144.193.10
+122.249.27.198
+249.216.147.102
+154.50.65.245
+123.130.135.11
+67.246.70.29
+37.22.191.103
+245.225.197.113
+191.107.14.10
+148.91.210.40
+60.100.112.211
+71.141.38.134
+250.79.121.13
+90.2.130.178
+39.250.166.207
+227.155.54.70
+52.48.98.95
+68.246.17.0
+11.21.16.85
+3.61.102.90
+186.168.190.156
+183.249.33.77
+242.4.17.168
+213.151.214.215
+86.245.56.173
+58.250.183.230
+83.70.104.111
+153.159.71.43
+175.88.250.161
+1.188.236.74
+200.245.105.247
+10.232.188.171
+124.183.9.18
+195.207.253.94
+164.28.253.162
+248.59.145.29
+7.198.69.124
+202.50.190.10
+238.29.88.143
+199.51.84.135
+95.142.146.51
+43.130.200.99
+15.192.122.14
+91.221.12.64
+133.132.76.23
+55.187.34.221
+63.122.67.134
+186.180.174.119
+124.179.51.222
+75.144.83.220
+189.241.22.209
+55.93.242.124
+4.139.117.42
+176.245.39.123
+13.245.201.84
+90.129.174.216
+235.241.223.98
+97.60.51.196
+244.34.246.4
+155.74.218.5
+98.249.33.16
+189.25.97.252
+166.52.152.177
+223.177.43.34
+130.233.96.92
+76.80.151.84
+216.237.188.64
+137.177.165.216
+23.131.87.94
+200.12.21.207
+81.228.249.96
+119.18.233.145
+243.142.222.52
+97.165.117.110
+211.240.246.209
+122.20.43.76
+152.98.151.77
+19.108.58.88
+53.200.218.196
+21.23.203.45
+95.253.142.53
+242.187.240.150
+77.116.190.169
+99.137.5.96
+164.178.25.19
+90.106.137.254
+190.12.180.57
+144.165.249.118
+188.167.188.195
+180.46.171.62
+45.239.213.123
+32.161.221.211
+115.72.13.59
+211.37.111.45
+0.84.10.246
+245.50.110.151
+33.118.7.129
+217.66.198.56
+127.228.20.112
+57.249.94.224
+162.78.219.8
+209.201.15.208
+176.13.73.114
+151.220.186.61
+51.112.133.64
+132.253.65.69
+18.241.230.137
+204.211.30.141
+152.107.123.158
+71.187.193.78
+226.234.233.187
+248.105.11.212
+59.119.179.229
+48.96.168.101
+92.242.17.54
+223.43.205.248
+139.202.51.100
+28.254.197.112
+113.209.200.111
+72.115.239.41
+208.46.114.174
+158.193.158.235
+104.21.206.253
+68.119.128.233
+115.231.14.25
+105.105.216.244
+58.169.238.130
+148.94.22.155
+68.172.160.45
+186.142.4.242
+206.88.116.124
+230.250.124.54
+140.89.20.196
+127.102.190.239
+126.216.56.115
+192.201.153.5
+5.100.0.53
+145.202.32.253
+142.157.184.147
+158.207.124.211
+216.134.226.76
+113.137.162.79
+151.58.136.168
+21.254.150.51
+161.233.76.181
+244.45.153.223
+244.43.101.45
+46.181.127.26
+17.45.96.80
+102.252.46.157
+118.41.112.68
+225.91.211.254
+6.191.205.137
+223.63.64.66
+39.211.84.233
+121.167.220.163
+74.169.26.55
+97.125.67.108
+15.6.242.63
+142.86.186.101
+28.13.72.95
+222.95.103.187
+118.81.56.156
+169.103.92.37
+95.197.38.171
+245.43.113.16
+106.50.246.42
+100.43.39.225
+135.245.145.15
+248.208.175.190
+4.251.163.181
+97.124.116.92
+107.90.82.14
+156.54.44.95
+118.124.12.143
+13.69.159.195
+145.100.197.63
+108.167.114.189
+60.251.32.222
+162.145.39.144
+211.164.161.91
+178.38.145.35
+133.237.250.143
+217.100.111.229
+147.101.209.101
+172.193.80.122
+84.13.76.137
+222.16.236.157
+15.64.148.230
+100.19.63.200
+109.102.167.4
+43.78.220.71
+67.115.167.133
+228.184.224.160
+213.182.57.108
+162.58.206.50
+218.227.82.177
+64.232.48.151
+8.101.245.20
+98.217.228.192
+58.186.224.86
+13.98.153.202
+195.87.90.30
+165.21.51.101
+169.152.198.43
+59.212.102.173
+179.91.211.41
+59.253.141.107
+167.124.216.108
+239.88.244.9
+222.144.180.251
+123.34.123.199
+163.126.134.44
+101.127.176.140
+86.135.234.174
+56.228.88.146
+18.66.1.7
+171.148.56.56
+23.244.70.49
+34.131.149.238
+16.168.119.2
+133.91.237.54
+77.210.114.54
+84.28.32.136
+106.20.207.215
+36.137.172.162
+247.87.238.186
+69.247.34.137
+100.115.221.58
+0.188.229.207
+167.210.8.75
+227.238.24.226
+237.227.39.251
+64.81.184.75
+53.152.232.0
+22.129.226.129
+23.43.216.221
+42.27.151.119
+118.234.163.90
+218.188.62.201
+160.102.198.224
+183.128.45.237
+26.23.238.48
+153.209.178.176
+252.140.142.40
+168.39.159.32
+19.68.123.237
+1.185.183.161
+32.127.131.216
+0.177.199.26
+200.182.75.98
+136.254.19.134
+139.162.174.53
+201.79.85.220
+147.208.203.148
+139.132.55.172
+]]></test_input>
+<test_output><![CDATA[OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+OUTER
+]]></test_output>
+<test_input><![CDATA[10.1.2.123
+255.248.0.0
+3
+10.8.2.123
+10.1.3.123
+10.2.3.4
+]]></test_input>
+<test_output><![CDATA[OUTER
+INNER
+INNER
+]]></test_output>
+<hint><![CDATA[]]></hint>
+<source><![CDATA[浙江传媒学院2011校赛]]></source>
+<solution language="C"><![CDATA[#include <stdio.h>
+unsigned int getip(){
+	unsigned int a=0,b,c,d;
+	scanf("%d.%d.%d.%d",&a,&b,&c,&d);
+	//printf("%d.%d.%d.%d\n",a,b,c,d);
+	a<<=8;
+	a+=b;
+	a<<=8;
+	a+=c;
+	a<<=8;
+	a+=d;
+	return a;
+}
+int main(){
+	unsigned int me,mask,n,other;
+	me=getip();
+	mask=getip();
+	scanf("%d\n",&n);
+	while(n){
+		other=getip();
+		if ((me&mask)==(other&mask))
+			printf("INNER\n");
+		else
+			printf("OUTER\n");
+		n--;
+	}
+
+}
+]]></solution>
+</item>
+<item>
+<title><![CDATA[月份牌]]></title>
+<time_limit><![CDATA[1]]></time_limit>
+<memory_limit><![CDATA[128]]></memory_limit>
+
+<description><![CDATA[<p>这里有一份2011年的月份牌可以参考</p>
+<pre>
+      January               February               March        
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+                   1         1  2  3  4  5         1  2  3  4  5
+ 2  3  4  5  6  7  8   6  7  8  9 10 11 12   6  7  8  9 10 11 12
+ 9 10 11 12 13 14 15  13 14 15 16 17 18 19  13 14 15 16 17 18 19
+16 17 18 19 20 21 22  20 21 22 23 24 25 26  20 21 22 23 24 25 26
+23 24 25 26 27 28 29  27 28                 27 28 29 30 31
+30 31
+       April                  May                   June        
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+                1  2   1  2  3  4  5  6  7            1  2  3  4
+ 3  4  5  6  7  8  9   8  9 10 11 12 13 14   5  6  7  8  9 10 11
+10 11 12 13 14 15 16  15 16 17 18 19 20 21  12 13 14 15 16 17 18
+17 18 19 20 21 22 23  22 23 24 25 26 27 28  19 20 21 22 23 24 25
+24 25 26 27 28 29 30  29 30 31              26 27 28 29 30
+                                                                               
+        July                 August              September      
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+                1  2      1  2  3  4  5  6               1  2  3
+ 3  4  5  6  7  8  9   7  8  9 10 11 12 13   4  5  6  7  8  9 10
+10 11 12 13 14 15 16  14 15 16 17 18 19 20  11 12 13 14 15 16 17
+17 18 19 20 21 22 23  21 22 23 24 25 26 27  18 19 20 21 22 23 24
+24 25 26 27 28 29 30  28 29 30 31           25 26 27 28 29 30
+31
+      October               November              December      
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+                   1         1  2  3  4  5               1  2  3
+ 2  3  4  5  6  7  8   6  7  8  9 10 11 12   4  5  6  7  8  9 10
+ 9 10 11 12 13 14 15  13 14 15 16 17 18 19  11 12 13 14 15 16 17
+16 17 18 19 20 21 22  20 21 22 23 24 25 26  18 19 20 21 22 23 24
+23 24 25 26 27 28 29  27 28 29 30           25 26 27 28 29 30 31
+30 31
+
+</pre>
+<pre>
+请编程实现输出给定年份（1-2050），给定月份(1-12)的月份牌。
+</pre>
+<pre>
+
+</pre>]]></description>
+<input><![CDATA[<p>两个数 N M,表示公元N年，M月。</p>]]></input> 
+<output><![CDATA[<p>该月的月份牌，注意格式。</p>]]></output>
+<sample_input><![CDATA[2012 12]]></sample_input>
+<sample_output><![CDATA[Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30 31
+]]></sample_output>
+<test_input><![CDATA[100 12
+]]></test_input>
+<test_output><![CDATA[Su Mo Tu We Th Fr Sa
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29 30 31
+]]></test_output>
+<test_input><![CDATA[10 12
+]]></test_input>
+<test_output><![CDATA[Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30 31
+]]></test_output>
+<test_input><![CDATA[1000 11
+]]></test_input>
+<test_output><![CDATA[Su Mo Tu We Th Fr Sa
+                1  2
+ 3  4  5  6  7  8  9
+10 11 12 13 14 15 16
+17 18 19 20 21 22 23
+24 25 26 27 28 29 30
+]]></test_output>
+<test_input><![CDATA[2050 11
+]]></test_input>
+<test_output><![CDATA[Su Mo Tu We Th Fr Sa
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29 30
+]]></test_output>
+<test_input><![CDATA[1980 9
+]]></test_input>
+<test_output><![CDATA[Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30
+]]></test_output>
+<test_input><![CDATA[2009 6
+]]></test_input>
+<test_output><![CDATA[Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30
+]]></test_output>
+<test_input><![CDATA[1982 5
+]]></test_input>
+<test_output><![CDATA[Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30 31
+]]></test_output>
+<test_input><![CDATA[1 1]]></test_input>
+<test_output><![CDATA[Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30 31
+]]></test_output>
+<hint><![CDATA[]]></hint>
+<source><![CDATA[浙江传媒学院2011校赛]]></source>
+<solution language="Bash"><![CDATA[read a b
+busybox cal $b $a|tail '-7'|grep -v '                    ']]></solution>
+</item>
+<item>
+<title><![CDATA[进程跟踪]]></title>
+<time_limit><![CDATA[1]]></time_limit>
+<memory_limit><![CDATA[128]]></memory_limit>
+
+<description><![CDATA[<p></p>
+<div class="index_main_left_1_top">
+<div class="index_main_left_1_top2">
+<p>linux程序调试strace命令详解</p>
+</div>
+</div>
+<p><br />
+strace 命令是一种强大的工具，它能够显示所有由用户空间程序发出的系统调用。 <br />
+strace 显示这些调用的参数并返回符号形式的值。strace 从内核接收信息，而且不需要以任何特殊的方式来构建内核。</p>
+<p>strace 的输出如下：</p>
+<p>brk(0) = 0&times;8062aa8 <br />
+brk(0&times;8063000) = 0&times;8063000 <br />
+mmap2(NULL, 4096, PROT_READ, MAP_PRIVATE, 3, 0&times;92f) = 0&times;40016000&nbsp;</p>
+<p><br />
+每一行都是一条系统调用，等号左边是系统调用的函数名及其参数，右边是该调用的返回值。</p>]]></description>
+<input><![CDATA[<p>strace的输出结果</p>]]></input> 
+<output><![CDATA[<p>将所有被调用过的系统调用名整理出来，去掉重复，按照字母排序。</p>]]></output>
+<sample_input><![CDATA[brk(0) = 0×8062aa8
+brk(0×8063000) = 0×8063000
+mmap2(NULL, 4096, PROT_READ, MAP_PRIVATE, 3, 0×92f) = 0×40016000 ]]></sample_input>
+<sample_output><![CDATA[brk
+mmap2
+]]></sample_output>
+<test_input><![CDATA[execve("/bin/ps", ["ps"], [/* 25 vars */]) = 0
+brk(0)                                  = 0x8fe9000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+mmap2(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb781c000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=115704, ...}) = 0
+mmap2(NULL, 115704, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb77ff000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libproc-3.2.8.so", O_RDONLY) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\0)\0\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0644, st_size=63244, ...}) = 0
+mmap2(NULL, 136600, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xba8000
+mmap2(0xbb6000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xe) = 0xbb6000
+mmap2(0xbb8000, 71064, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xbb8000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libc.so.6", O_RDONLY)        = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0@n\1\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0755, st_size=1421892, ...}) = 0
+mmap2(NULL, 1427880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xc35000
+mmap2(0xd8c000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x157) = 0xd8c000
+mmap2(0xd8f000, 10664, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xd8f000
+close(3)                                = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb77fe000
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb77fd000
+set_thread_area({entry_number:-1 -> 6, base_addr:0xb77feb30, limit:1048575, seg_32bit:1, contents:0, read_exec_only:0, limit_in_pages:1, seg_not_present:0, useable:1}) = 0
+mprotect(0xd8c000, 8192, PROT_READ)     = 0
+mprotect(0xbb6000, 4096, PROT_READ)     = 0
+mprotect(0x805b000, 4096, PROT_READ)    = 0
+mprotect(0x532000, 4096, PROT_READ)     = 0
+munmap(0xb77ff000, 115704)              = 0
+brk(0)                                  = 0x8fe9000
+brk(0x900a000)                          = 0x900a000
+open("/proc/version", O_RDONLY)         = 3
+fstat64(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb781b000
+read(3, "Linux version 2.6.35-25-generic "..., 1024) = 145
+close(3)                                = 0
+munmap(0xb781b000, 4096)                = 0
+open("/proc/stat", O_RDONLY|O_CLOEXEC)  = 3
+read(3, "cpu  43702 14523 14035 881846 44"..., 8192) = 1357
+close(3)                                = 0
+open("/usr/lib/locale/locale-archive", O_RDONLY|O_LARGEFILE) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=5897488, ...}) = 0
+mmap2(NULL, 2097152, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb75fd000
+mmap2(NULL, 1650688, PROT_READ, MAP_PRIVATE, 3, 0x40b) = 0xb746a000
+close(3)                                = 0
+rt_sigaction(SIGSYS, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGPWR, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGIO, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGVTALRM, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGXFSZ, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGXCPU, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGURG, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGTTIN, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGCONT, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGCHLD, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGSTKFLT, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGTERM, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGALRM, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGPIPE, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGUSR2, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGSEGV, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGUSR1, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGFPE, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGBUS, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGABRT, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGTRAP, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGILL, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+rt_sigaction(SIGHUP, {0x8049514, ~[RTMIN RT_1], 0}, NULL, 8) = 0
+open("/proc/self/stat", O_RDONLY)       = 3
+read(3, "5429 (ps) R 5428 5428 3030 34816"..., 1023) = 192
+close(3)                                = 0
+ioctl(1, TIOCGWINSZ, {ws_row=35, ws_col=112, ws_xpixel=0, ws_ypixel=0}) = 0
+ioctl(1, SNDCTL_TMR_TIMEBASE or TCGETS, {B38400 opost isig icanon echo ...}) = 0
+geteuid32()                             = 0
+open("/proc/uptime", O_RDONLY)          = 3
+lseek(3, 0, SEEK_SET)                   = 0
+read(3, "4949.82 8818.46\n", 2047)      = 16
+open("/proc/sys/kernel/pid_max", O_RDONLY) = 4
+read(4, "32768\n", 24)                  = 6
+close(4)                                = 0
+mmap2(NULL, 139264, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7448000
+mprotect(0xb7469000, 4096, PROT_NONE)   = 0
+time(NULL)                              = 1298856162
+open("/proc/meminfo", O_RDONLY)         = 4
+lseek(4, 0, SEEK_SET)                   = 0
+read(4, "MemTotal:        1541788 kB\nMemF"..., 2047) = 1248
+stat64("/proc/self/task", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc", O_RDONLY|O_NONBLOCK|O_LARGEFILE|O_DIRECTORY|O_CLOEXEC) = 5
+fcntl64(5, F_GETFD)                     = 0x1 (flags FD_CLOEXEC)
+getdents(5, /* 221 entries */, 32768)   = 3796
+stat64("/proc/1", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1/stat", O_RDONLY)          = 6
+read(6, "1 (init) S 0 1 1 0 -1 4202752 62"..., 1023) = 199
+close(6)                                = 0
+open("/proc/1/status", O_RDONLY)        = 6
+read(6, "Name:\tinit\nState:\tS (sleeping)\nT"..., 1023) = 712
+close(6)                                = 0
+stat64("/proc/2", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2/stat", O_RDONLY)          = 6
+read(6, "2 (kthreadd) S 0 0 0 0 -1 214962"..., 1023) = 135
+close(6)                                = 0
+open("/proc/2/status", O_RDONLY)        = 6
+read(6, "Name:\tkthreadd\nState:\tS (sleepin"..., 1023) = 501
+close(6)                                = 0
+stat64("/proc/3", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3/stat", O_RDONLY)          = 6
+read(6, "3 (ksoftirqd/0) S 2 0 0 0 -1 221"..., 1023) = 140
+close(6)                                = 0
+open("/proc/3/status", O_RDONLY)        = 6
+read(6, "Name:\tksoftirqd/0\nState:\tS (slee"..., 1023) = 505
+close(6)                                = 0
+stat64("/proc/4", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/4/stat", O_RDONLY)          = 6
+read(6, "4 (migration/0) S 2 0 0 0 -1 221"..., 1023) = 142
+close(6)                                = 0
+open("/proc/4/status", O_RDONLY)        = 6
+read(6, "Name:\tmigration/0\nState:\tS (slee"..., 1023) = 504
+close(6)                                = 0
+stat64("/proc/5", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/5/stat", O_RDONLY)          = 6
+read(6, "5 (watchdog/0) S 2 0 0 0 -1 2216"..., 1023) = 141
+close(6)                                = 0
+open("/proc/5/status", O_RDONLY)        = 6
+read(6, "Name:\twatchdog/0\nState:\tS (sleep"..., 1023) = 500
+close(6)                                = 0
+stat64("/proc/6", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/6/stat", O_RDONLY)          = 6
+read(6, "6 (migration/1) S 2 0 0 0 -1 221"..., 1023) = 142
+close(6)                                = 0
+open("/proc/6/status", O_RDONLY)        = 6
+read(6, "Name:\tmigration/1\nState:\tS (slee"..., 1023) = 504
+close(6)                                = 0
+stat64("/proc/7", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/7/stat", O_RDONLY)          = 6
+read(6, "7 (ksoftirqd/1) S 2 0 0 0 -1 221"..., 1023) = 139
+close(6)                                = 0
+open("/proc/7/status", O_RDONLY)        = 6
+read(6, "Name:\tksoftirqd/1\nState:\tS (slee"..., 1023) = 504
+close(6)                                = 0
+stat64("/proc/8", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/8/stat", O_RDONLY)          = 6
+read(6, "8 (watchdog/1) S 2 0 0 0 -1 2216"..., 1023) = 141
+close(6)                                = 0
+open("/proc/8/status", O_RDONLY)        = 6
+read(6, "Name:\twatchdog/1\nState:\tS (sleep"..., 1023) = 500
+close(6)                                = 0
+stat64("/proc/9", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/9/stat", O_RDONLY)          = 6
+read(6, "9 (events/0) S 2 0 0 0 -1 221673"..., 1023) = 138
+close(6)                                = 0
+open("/proc/9/status", O_RDONLY)        = 6
+read(6, "Name:\tevents/0\nState:\tS (sleepin"..., 1023) = 502
+close(6)                                = 0
+stat64("/proc/10", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/10/stat", O_RDONLY)         = 6
+read(6, "10 (events/1) S 2 0 0 0 -1 22167"..., 1023) = 139
+close(6)                                = 0
+open("/proc/10/status", O_RDONLY)       = 6
+read(6, "Name:\tevents/1\nState:\tS (sleepin"..., 1023) = 503
+close(6)                                = 0
+stat64("/proc/11", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/11/stat", O_RDONLY)         = 6
+read(6, "11 (cpuset) S 2 0 0 0 -1 2149621"..., 1023) = 136
+close(6)                                = 0
+open("/proc/11/status", O_RDONLY)       = 6
+read(6, "Name:\tcpuset\nState:\tS (sleeping)"..., 1023) = 500
+close(6)                                = 0
+stat64("/proc/12", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/12/stat", O_RDONLY)         = 6
+read(6, "12 (khelper) S 2 0 0 0 -1 214962"..., 1023) = 137
+close(6)                                = 0
+open("/proc/12/status", O_RDONLY)       = 6
+read(6, "Name:\tkhelper\nState:\tS (sleeping"..., 1023) = 502
+close(6)                                = 0
+stat64("/proc/13", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/13/stat", O_RDONLY)         = 6
+read(6, "13 (netns) S 2 0 0 0 -1 21496218"..., 1023) = 135
+close(6)                                = 0
+open("/proc/13/status", O_RDONLY)       = 6
+read(6, "Name:\tnetns\nState:\tS (sleeping)\n"..., 1023) = 499
+close(6)                                = 0
+stat64("/proc/14", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/14/stat", O_RDONLY)         = 6
+read(6, "14 (async/mgr) S 2 0 0 0 -1 2149"..., 1023) = 139
+close(6)                                = 0
+open("/proc/14/status", O_RDONLY)       = 6
+read(6, "Name:\tasync/mgr\nState:\tS (sleepi"..., 1023) = 504
+close(6)                                = 0
+stat64("/proc/15", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/15/stat", O_RDONLY)         = 6
+read(6, "15 (pm) S 2 0 0 0 -1 2149589056 "..., 1023) = 132
+close(6)                                = 0
+open("/proc/15/status", O_RDONLY)       = 6
+read(6, "Name:\tpm\nState:\tS (sleeping)\nTgi"..., 1023) = 496
+close(6)                                = 0
+stat64("/proc/17", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/17/stat", O_RDONLY)         = 6
+read(6, "17 (sync_supers) S 2 0 0 0 -1 21"..., 1023) = 145
+close(6)                                = 0
+open("/proc/17/status", O_RDONLY)       = 6
+read(6, "Name:\tsync_supers\nState:\tS (slee"..., 1023) = 509
+close(6)                                = 0
+stat64("/proc/18", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/18/stat", O_RDONLY)         = 6
+read(6, "18 (bdi-default) S 2 0 0 0 -1 21"..., 1023) = 141
+close(6)                                = 0
+open("/proc/18/status", O_RDONLY)       = 6
+read(6, "Name:\tbdi-default\nState:\tS (slee"..., 1023) = 508
+close(6)                                = 0
+stat64("/proc/19", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/19/stat", O_RDONLY)         = 6
+read(6, "19 (kintegrityd/0) S 2 0 0 0 -1 "..., 1023) = 143
+close(6)                                = 0
+open("/proc/19/status", O_RDONLY)       = 6
+read(6, "Name:\tkintegrityd/0\nState:\tS (sl"..., 1023) = 505
+close(6)                                = 0
+stat64("/proc/20", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/20/stat", O_RDONLY)         = 6
+read(6, "20 (kintegrityd/1) S 2 0 0 0 -1 "..., 1023) = 143
+close(6)                                = 0
+open("/proc/20/status", O_RDONLY)       = 6
+read(6, "Name:\tkintegrityd/1\nState:\tS (sl"..., 1023) = 505
+close(6)                                = 0
+stat64("/proc/21", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/21/stat", O_RDONLY)         = 6
+read(6, "21 (kblockd/0) S 2 0 0 0 -1 2216"..., 1023) = 140
+close(6)                                = 0
+open("/proc/21/status", O_RDONLY)       = 6
+read(6, "Name:\tkblockd/0\nState:\tS (sleepi"..., 1023) = 505
+close(6)                                = 0
+stat64("/proc/22", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/22/stat", O_RDONLY)         = 6
+read(6, "22 (kblockd/1) S 2 0 0 0 -1 2216"..., 1023) = 139
+close(6)                                = 0
+open("/proc/22/status", O_RDONLY)       = 6
+read(6, "Name:\tkblockd/1\nState:\tS (sleepi"..., 1023) = 503
+close(6)                                = 0
+stat64("/proc/23", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/23/stat", O_RDONLY)         = 6
+read(6, "23 (kacpid) S 2 0 0 0 -1 2149621"..., 1023) = 136
+close(6)                                = 0
+open("/proc/23/status", O_RDONLY)       = 6
+read(6, "Name:\tkacpid\nState:\tS (sleeping)"..., 1023) = 498
+close(6)                                = 0
+stat64("/proc/24", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/24/stat", O_RDONLY)         = 6
+read(6, "24 (kacpi_notify) S 2 0 0 0 -1 2"..., 1023) = 142
+close(6)                                = 0
+open("/proc/24/status", O_RDONLY)       = 6
+read(6, "Name:\tkacpi_notify\nState:\tS (sle"..., 1023) = 504
+close(6)                                = 0
+stat64("/proc/25", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/25/stat", O_RDONLY)         = 6
+read(6, "25 (kacpi_hotplug) S 2 0 0 0 -1 "..., 1023) = 143
+close(6)                                = 0
+open("/proc/25/status", O_RDONLY)       = 6
+read(6, "Name:\tkacpi_hotplug\nState:\tS (sl"..., 1023) = 505
+close(6)                                = 0
+stat64("/proc/26", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/26/stat", O_RDONLY)         = 6
+read(6, "26 (ata_aux) S 2 0 0 0 -1 214962"..., 1023) = 137
+close(6)                                = 0
+open("/proc/26/status", O_RDONLY)       = 6
+read(6, "Name:\tata_aux\nState:\tS (sleeping"..., 1023) = 501
+close(6)                                = 0
+stat64("/proc/27", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/27/stat", O_RDONLY)         = 6
+read(6, "27 (ata_sff/0) S 2 0 0 0 -1 2216"..., 1023) = 140
+close(6)                                = 0
+open("/proc/27/status", O_RDONLY)       = 6
+read(6, "Name:\tata_sff/0\nState:\tS (sleepi"..., 1023) = 504
+close(6)                                = 0
+stat64("/proc/28", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/28/stat", O_RDONLY)         = 6
+read(6, "28 (ata_sff/1) S 2 0 0 0 -1 2216"..., 1023) = 140
+close(6)                                = 0
+open("/proc/28/status", O_RDONLY)       = 6
+read(6, "Name:\tata_sff/1\nState:\tS (sleepi"..., 1023) = 504
+close(6)                                = 0
+stat64("/proc/29", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/29/stat", O_RDONLY)         = 6
+read(6, "29 (khubd) S 2 0 0 0 -1 21495893"..., 1023) = 135
+close(6)                                = 0
+open("/proc/29/status", O_RDONLY)       = 6
+read(6, "Name:\tkhubd\nState:\tS (sleeping)\n"..., 1023) = 500
+close(6)                                = 0
+stat64("/proc/30", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/30/stat", O_RDONLY)         = 6
+read(6, "30 (kseriod) S 2 0 0 0 -1 214962"..., 1023) = 137
+close(6)                                = 0
+open("/proc/30/status", O_RDONLY)       = 6
+read(6, "Name:\tkseriod\nState:\tS (sleeping"..., 1023) = 503
+close(6)                                = 0
+stat64("/proc/31", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/31/stat", O_RDONLY)         = 6
+read(6, "31 (kmmcd) S 2 0 0 0 -1 21496218"..., 1023) = 135
+close(6)                                = 0
+open("/proc/31/status", O_RDONLY)       = 6
+read(6, "Name:\tkmmcd\nState:\tS (sleeping)\n"..., 1023) = 499
+close(6)                                = 0
+stat64("/proc/32", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/32/stat", O_RDONLY)         = 6
+read(6, "32 (khungtaskd) S 2 0 0 0 -1 214"..., 1023) = 140
+close(6)                                = 0
+open("/proc/32/status", O_RDONLY)       = 6
+read(6, "Name:\tkhungtaskd\nState:\tS (sleep"..., 1023) = 505
+close(6)                                = 0
+stat64("/proc/33", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/33/stat", O_RDONLY)         = 6
+read(6, "33 (kswapd0) S 2 0 0 0 -1 215824"..., 1023) = 137
+close(6)                                = 0
+open("/proc/33/status", O_RDONLY)       = 6
+read(6, "Name:\tkswapd0\nState:\tS (sleeping"..., 1023) = 501
+close(6)                                = 0
+stat64("/proc/34", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/34/stat", O_RDONLY)         = 6
+read(6, "34 (ksmd) S 2 0 0 0 -1 214962182"..., 1023) = 134
+close(6)                                = 0
+open("/proc/34/status", O_RDONLY)       = 6
+read(6, "Name:\tksmd\nState:\tS (sleeping)\nT"..., 1023) = 498
+close(6)                                = 0
+stat64("/proc/35", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/35/stat", O_RDONLY)         = 6
+read(6, "35 (aio/0) S 2 0 0 0 -1 22167306"..., 1023) = 135
+close(6)                                = 0
+open("/proc/35/status", O_RDONLY)       = 6
+read(6, "Name:\taio/0\nState:\tS (sleeping)\n"..., 1023) = 497
+close(6)                                = 0
+stat64("/proc/36", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/36/stat", O_RDONLY)         = 6
+read(6, "36 (aio/1) S 2 0 0 0 -1 22167306"..., 1023) = 135
+close(6)                                = 0
+open("/proc/36/status", O_RDONLY)       = 6
+read(6, "Name:\taio/1\nState:\tS (sleeping)\n"..., 1023) = 497
+close(6)                                = 0
+stat64("/proc/37", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/37/stat", O_RDONLY)         = 6
+read(6, "37 (ecryptfs-kthrea) S 2 0 0 0 -"..., 1023) = 145
+close(6)                                = 0
+open("/proc/37/status", O_RDONLY)       = 6
+read(6, "Name:\tecryptfs-kthrea\nState:\tS ("..., 1023) = 509
+close(6)                                = 0
+stat64("/proc/38", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/38/stat", O_RDONLY)         = 6
+read(6, "38 (crypto/0) S 2 0 0 0 -1 22167"..., 1023) = 138
+close(6)                                = 0
+open("/proc/38/status", O_RDONLY)       = 6
+read(6, "Name:\tcrypto/0\nState:\tS (sleepin"..., 1023) = 500
+close(6)                                = 0
+stat64("/proc/39", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/39/stat", O_RDONLY)         = 6
+read(6, "39 (crypto/1) S 2 0 0 0 -1 22167"..., 1023) = 138
+close(6)                                = 0
+open("/proc/39/status", O_RDONLY)       = 6
+read(6, "Name:\tcrypto/1\nState:\tS (sleepin"..., 1023) = 500
+close(6)                                = 0
+stat64("/proc/45", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/45/stat", O_RDONLY)         = 6
+read(6, "45 (scsi_eh_0) S 2 0 0 0 -1 2149"..., 1023) = 139
+close(6)                                = 0
+open("/proc/45/status", O_RDONLY)       = 6
+read(6, "Name:\tscsi_eh_0\nState:\tS (sleepi"..., 1023) = 503
+close(6)                                = 0
+stat64("/proc/46", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/46/stat", O_RDONLY)         = 6
+read(6, "46 (scsi_eh_1) S 2 0 0 0 -1 2149"..., 1023) = 141
+close(6)                                = 0
+open("/proc/46/status", O_RDONLY)       = 6
+read(6, "Name:\tscsi_eh_1\nState:\tS (sleepi"..., 1023) = 507
+close(6)                                = 0
+stat64("/proc/51", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/51/stat", O_RDONLY)         = 6
+read(6, "51 (kstriped) S 2 0 0 0 -1 21496"..., 1023) = 138
+close(6)                                = 0
+open("/proc/51/status", O_RDONLY)       = 6
+read(6, "Name:\tkstriped\nState:\tS (sleepin"..., 1023) = 502
+close(6)                                = 0
+stat64("/proc/52", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/52/stat", O_RDONLY)         = 6
+read(6, "52 (kmpathd/0) S 2 0 0 0 -1 2216"..., 1023) = 139
+close(6)                                = 0
+open("/proc/52/status", O_RDONLY)       = 6
+read(6, "Name:\tkmpathd/0\nState:\tS (sleepi"..., 1023) = 501
+close(6)                                = 0
+stat64("/proc/53", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/53/stat", O_RDONLY)         = 6
+read(6, "53 (kmpathd/1) S 2 0 0 0 -1 2216"..., 1023) = 139
+close(6)                                = 0
+open("/proc/53/status", O_RDONLY)       = 6
+read(6, "Name:\tkmpathd/1\nState:\tS (sleepi"..., 1023) = 501
+close(6)                                = 0
+stat64("/proc/54", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/54/stat", O_RDONLY)         = 6
+read(6, "54 (kmpath_handlerd) S 2 0 0 0 -"..., 1023) = 145
+close(6)                                = 0
+open("/proc/54/status", O_RDONLY)       = 6
+read(6, "Name:\tkmpath_handlerd\nState:\tS ("..., 1023) = 509
+close(6)                                = 0
+stat64("/proc/55", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/55/stat", O_RDONLY)         = 6
+read(6, "55 (ksnapd) S 2 0 0 0 -1 2149621"..., 1023) = 136
+close(6)                                = 0
+open("/proc/55/status", O_RDONLY)       = 6
+read(6, "Name:\tksnapd\nState:\tS (sleeping)"..., 1023) = 500
+close(6)                                = 0
+stat64("/proc/56", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/56/stat", O_RDONLY)         = 6
+read(6, "56 (kondemand/0) S 2 0 0 0 -1 22"..., 1023) = 144
+close(6)                                = 0
+open("/proc/56/status", O_RDONLY)       = 6
+read(6, "Name:\tkondemand/0\nState:\tS (slee"..., 1023) = 508
+close(6)                                = 0
+stat64("/proc/57", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/57/stat", O_RDONLY)         = 6
+read(6, "57 (kondemand/1) S 2 0 0 0 -1 22"..., 1023) = 143
+close(6)                                = 0
+open("/proc/57/status", O_RDONLY)       = 6
+read(6, "Name:\tkondemand/1\nState:\tS (slee"..., 1023) = 508
+close(6)                                = 0
+stat64("/proc/58", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/58/stat", O_RDONLY)         = 6
+read(6, "58 (kconservative/0) S 2 0 0 0 -"..., 1023) = 145
+close(6)                                = 0
+open("/proc/58/status", O_RDONLY)       = 6
+read(6, "Name:\tkconservative/0\nState:\tS ("..., 1023) = 507
+close(6)                                = 0
+stat64("/proc/59", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/59/stat", O_RDONLY)         = 6
+read(6, "59 (kconservative/1) S 2 0 0 0 -"..., 1023) = 145
+close(6)                                = 0
+open("/proc/59/status", O_RDONLY)       = 6
+read(6, "Name:\tkconservative/1\nState:\tS ("..., 1023) = 507
+close(6)                                = 0
+stat64("/proc/297", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/297/stat", O_RDONLY)        = 6
+read(6, "297 (usbhid_resumer) S 2 0 0 0 -"..., 1023) = 146
+close(6)                                = 0
+open("/proc/297/status", O_RDONLY)      = 6
+read(6, "Name:\tusbhid_resumer\nState:\tS (s"..., 1023) = 510
+close(6)                                = 0
+stat64("/proc/318", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/318/stat", O_RDONLY)        = 6
+read(6, "318 (flush-8:0) S 2 0 0 0 -1 215"..., 1023) = 144
+close(6)                                = 0
+open("/proc/318/status", O_RDONLY)      = 6
+read(6, "Name:\tflush-8:0\nState:\tS (sleepi"..., 1023) = 509
+close(6)                                = 0
+stat64("/proc/321", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/321/stat", O_RDONLY)        = 6
+read(6, "321 (reiserfs/0) S 2 0 0 0 -1 22"..., 1023) = 142
+close(6)                                = 0
+open("/proc/321/status", O_RDONLY)      = 6
+read(6, "Name:\treiserfs/0\nState:\tS (sleep"..., 1023) = 506
+close(6)                                = 0
+stat64("/proc/322", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/322/stat", O_RDONLY)        = 6
+read(6, "322 (reiserfs/1) S 2 0 0 0 -1 22"..., 1023) = 142
+close(6)                                = 0
+open("/proc/322/status", O_RDONLY)      = 6
+read(6, "Name:\treiserfs/1\nState:\tS (sleep"..., 1023) = 506
+close(6)                                = 0
+stat64("/proc/341", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/341/stat", O_RDONLY)        = 6
+read(6, "341 (mountall) S 1 340 340 0 -1 "..., 1023) = 191
+close(6)                                = 0
+open("/proc/341/status", O_RDONLY)      = 6
+read(6, "Name:\tmountall\nState:\tS (sleepin"..., 1023) = 719
+close(6)                                = 0
+stat64("/proc/365", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/365/stat", O_RDONLY)        = 6
+read(6, "365 (upstart-udev-br) S 1 363 36"..., 1023) = 192
+close(6)                                = 0
+open("/proc/365/status", O_RDONLY)      = 6
+read(6, "Name:\tupstart-udev-br\nState:\tS ("..., 1023) = 727
+close(6)                                = 0
+stat64("/proc/368", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/368/stat", O_RDONLY)        = 6
+read(6, "368 (udevd) S 1 368 368 0 -1 419"..., 1023) = 197
+close(6)                                = 0
+open("/proc/368/status", O_RDONLY)      = 6
+read(6, "Name:\tudevd\nState:\tS (sleeping)\n"..., 1023) = 718
+close(6)                                = 0
+stat64("/proc/698", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/698/stat", O_RDONLY)        = 6
+read(6, "698 (cfg80211) S 2 0 0 0 -1 2149"..., 1023) = 141
+close(6)                                = 0
+open("/proc/698/status", O_RDONLY)      = 6
+read(6, "Name:\tcfg80211\nState:\tS (sleepin"..., 1023) = 504
+close(6)                                = 0
+stat64("/proc/732", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/732/stat", O_RDONLY)        = 6
+read(6, "732 (pccardd) S 2 0 0 0 -1 21495"..., 1023) = 140
+close(6)                                = 0
+open("/proc/732/status", O_RDONLY)      = 6
+read(6, "Name:\tpccardd\nState:\tS (sleeping"..., 1023) = 503
+close(6)                                = 0
+stat64("/proc/748", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/748/stat", O_RDONLY)        = 6
+read(6, "748 (kpsmoused) S 2 0 0 0 -1 214"..., 1023) = 142
+close(6)                                = 0
+open("/proc/748/status", O_RDONLY)      = 6
+read(6, "Name:\tkpsmoused\nState:\tS (sleepi"..., 1023) = 505
+close(6)                                = 0
+stat64("/proc/782", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/782/stat", O_RDONLY)        = 6
+read(6, "782 (hd-audio0) S 2 0 0 0 -1 214"..., 1023) = 142
+close(6)                                = 0
+open("/proc/782/status", O_RDONLY)      = 6
+read(6, "Name:\thd-audio0\nState:\tS (sleepi"..., 1023) = 505
+close(6)                                = 0
+stat64("/proc/821", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/821/stat", O_RDONLY)        = 6
+read(6, "821 (iwl3945) S 2 0 0 0 -1 21496"..., 1023) = 140
+close(6)                                = 0
+open("/proc/821/status", O_RDONLY)      = 6
+read(6, "Name:\tiwl3945\nState:\tS (sleeping"..., 1023) = 506
+close(6)                                = 0
+stat64("/proc/822", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/822/stat", O_RDONLY)        = 6
+read(6, "822 (phy0) S 2 0 0 0 -1 21496218"..., 1023) = 137
+close(6)                                = 0
+open("/proc/822/status", O_RDONLY)      = 6
+read(6, "Name:\tphy0\nState:\tS (sleeping)\nT"..., 1023) = 500
+close(6)                                = 0
+stat64("/proc/883", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/883/stat", O_RDONLY)        = 6
+read(6, "883 (sshd) S 1 883 883 0 -1 4202"..., 1023) = 185
+close(6)                                = 0
+open("/proc/883/status", O_RDONLY)      = 6
+read(6, "Name:\tsshd\nState:\tS (sleeping)\nT"..., 1023) = 714
+close(6)                                = 0
+stat64("/proc/975", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/975/stat", O_RDONLY)        = 6
+read(6, "975 (rsyslogd) S 1 855 855 0 -1 "..., 1023) = 199
+close(6)                                = 0
+open("/proc/975/status", O_RDONLY)      = 6
+read(6, "Name:\trsyslogd\nState:\tS (sleepin"..., 1023) = 735
+close(6)                                = 0
+stat64("/proc/1024", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1024/stat", O_RDONLY)       = 6
+read(6, "1024 (dbus-daemon) S 1 1024 1024"..., 1023) = 190
+close(6)                                = 0
+open("/proc/1024/status", O_RDONLY)     = 6
+read(6, "Name:\tdbus-daemon\nState:\tS (slee"..., 1023) = 744
+close(6)                                = 0
+stat64("/proc/1037", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1037/stat", O_RDONLY)       = 6
+read(6, "1037 (gdm-binary) S 1 1037 1037 "..., 1023) = 199
+close(6)                                = 0
+open("/proc/1037/status", O_RDONLY)     = 6
+read(6, "Name:\tgdm-binary\nState:\tS (sleep"..., 1023) = 723
+close(6)                                = 0
+stat64("/proc/1055", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1055/stat", O_RDONLY)       = 6
+read(6, "1055 (avahi-daemon) S 1 1054 105"..., 1023) = 199
+close(6)                                = 0
+open("/proc/1055/status", O_RDONLY)     = 6
+read(6, "Name:\tavahi-daemon\nState:\tS (sle"..., 1023) = 745
+close(6)                                = 0
+stat64("/proc/1056", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1056/stat", O_RDONLY)       = 6
+read(6, "1056 (avahi-daemon) S 1055 1054 "..., 1023) = 193
+close(6)                                = 0
+open("/proc/1056/status", O_RDONLY)     = 6
+read(6, "Name:\tavahi-daemon\nState:\tS (sle"..., 1023) = 746
+close(6)                                = 0
+stat64("/proc/1061", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1061/stat", O_RDONLY)       = 6
+read(6, "1061 (udevd) S 368 368 368 0 -1 "..., 1023) = 195
+close(6)                                = 0
+open("/proc/1061/status", O_RDONLY)     = 6
+read(6, "Name:\tudevd\nState:\tS (sleeping)\n"..., 1023) = 718
+close(6)                                = 0
+stat64("/proc/1075", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1075/stat", O_RDONLY)       = 6
+read(6, "1075 (NetworkManager) S 1 1075 1"..., 1023) = 206
+close(6)                                = 0
+open("/proc/1075/status", O_RDONLY)     = 6
+read(6, "Name:\tNetworkManager\nState:\tS (s"..., 1023) = 728
+close(6)                                = 0
+stat64("/proc/1077", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1077/stat", O_RDONLY)       = 6
+read(6, "1077 (modem-manager) S 1 1024 10"..., 1023) = 198
+close(6)                                = 0
+open("/proc/1077/status", O_RDONLY)     = 6
+read(6, "Name:\tmodem-manager\nState:\tS (sl"..., 1023) = 727
+close(6)                                = 0
+stat64("/proc/1079", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1079/stat", O_RDONLY)       = 6
+read(6, "1079 (cupsd) S 1 1079 1079 0 -1 "..., 1023) = 190
+close(6)                                = 0
+open("/proc/1079/status", O_RDONLY)     = 6
+read(6, "Name:\tcupsd\nState:\tS (sleeping)\n"..., 1023) = 717
+close(6)                                = 0
+stat64("/proc/1087", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1087/stat", O_RDONLY)       = 6
+read(6, "1087 (console-kit-dae) S 1 1024 "..., 1023) = 206
+close(6)                                = 0
+open("/proc/1087/status", O_RDONLY)     = 6
+read(6, "Name:\tconsole-kit-dae\nState:\tS ("..., 1023) = 731
+close(6)                                = 0
+stat64("/proc/1098", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1098/stat", O_RDONLY)       = 6
+read(6, "1098 (wpa_supplicant) S 1 1024 1"..., 1023) = 201
+close(6)                                = 0
+open("/proc/1098/status", O_RDONLY)     = 6
+read(6, "Name:\twpa_supplicant\nState:\tS (s"..., 1023) = 728
+close(6)                                = 0
+stat64("/proc/1101", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1101/stat", O_RDONLY)       = 6
+read(6, "1101 (getty) S 1 1101 1101 1028 "..., 1023) = 190
+close(6)                                = 0
+open("/proc/1101/status", O_RDONLY)     = 6
+read(6, "Name:\tgetty\nState:\tS (sleeping)\n"..., 1023) = 716
+close(6)                                = 0
+stat64("/proc/1107", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1107/stat", O_RDONLY)       = 6
+read(6, "1107 (getty) S 1 1107 1107 1029 "..., 1023) = 189
+close(6)                                = 0
+open("/proc/1107/status", O_RDONLY)     = 6
+read(6, "Name:\tgetty\nState:\tS (sleeping)\n"..., 1023) = 716
+close(6)                                = 0
+stat64("/proc/1181", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1181/stat", O_RDONLY)       = 6
+read(6, "1181 (gdm-simple-slav) S 1037 10"..., 1023) = 210
+close(6)                                = 0
+open("/proc/1181/status", O_RDONLY)     = 6
+read(6, "Name:\tgdm-simple-slav\nState:\tS ("..., 1023) = 731
+close(6)                                = 0
+stat64("/proc/1186", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1186/stat", O_RDONLY)       = 6
+read(6, "1186 (getty) S 1 1186 1186 1026 "..., 1023) = 189
+close(6)                                = 0
+open("/proc/1186/status", O_RDONLY)     = 6
+read(6, "Name:\tgetty\nState:\tS (sleeping)\n"..., 1023) = 716
+close(6)                                = 0
+stat64("/proc/1187", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1187/stat", O_RDONLY)       = 6
+read(6, "1187 (getty) S 1 1187 1187 1027 "..., 1023) = 189
+close(6)                                = 0
+open("/proc/1187/status", O_RDONLY)     = 6
+read(6, "Name:\tgetty\nState:\tS (sleeping)\n"..., 1023) = 716
+close(6)                                = 0
+stat64("/proc/1190", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1190/stat", O_RDONLY)       = 6
+read(6, "1190 (getty) S 1 1190 1190 1030 "..., 1023) = 188
+close(6)                                = 0
+open("/proc/1190/status", O_RDONLY)     = 6
+read(6, "Name:\tgetty\nState:\tS (sleeping)\n"..., 1023) = 716
+close(6)                                = 0
+stat64("/proc/1193", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1193/stat", O_RDONLY)       = 6
+read(6, "1193 (acpid) S 1 1193 1193 0 -1 "..., 1023) = 193
+close(6)                                = 0
+open("/proc/1193/status", O_RDONLY)     = 6
+read(6, "Name:\tacpid\nState:\tS (sleeping)\n"..., 1023) = 717
+close(6)                                = 0
+stat64("/proc/1194", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1194/stat", O_RDONLY)       = 6
+read(6, "1194 (atd) S 1 1194 1194 0 -1 41"..., 1023) = 183
+close(6)                                = 0
+open("/proc/1194/status", O_RDONLY)     = 6
+read(6, "Name:\tatd\nState:\tS (sleeping)\nTg"..., 1023) = 714
+close(6)                                = 0
+stat64("/proc/1195", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1195/stat", O_RDONLY)       = 6
+read(6, "1195 (cron) S 1 1195 1195 0 -1 4"..., 1023) = 191
+close(6)                                = 0
+open("/proc/1195/status", O_RDONLY)     = 6
+read(6, "Name:\tcron\nState:\tS (sleeping)\nT"..., 1023) = 717
+close(6)                                = 0
+stat64("/proc/1206", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1206/stat", O_RDONLY)       = 6
+read(6, "1206 (Xorg) S 1181 1206 1206 103"..., 1023) = 222
+close(6)                                = 0
+open("/proc/1206/status", O_RDONLY)     = 6
+read(6, "Name:\tXorg\nState:\tS (sleeping)\nT"..., 1023) = 728
+close(6)                                = 0
+stat64("/proc/1223", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1223/stat", O_RDONLY)       = 6
+read(6, "1223 (dhclient) S 1075 1223 1075"..., 1023) = 188
+close(6)                                = 0
+open("/proc/1223/status", O_RDONLY)     = 6
+read(6, "Name:\tdhclient\nState:\tS (sleepin"..., 1023) = 723
+close(6)                                = 0
+stat64("/proc/1261", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1261/stat", O_RDONLY)       = 6
+read(6, "1261 (mysqld) S 1 1261 1261 0 -1"..., 1023) = 205
+close(6)                                = 0
+open("/proc/1261/status", O_RDONLY)     = 6
+read(6, "Name:\tmysqld\nState:\tS (sleeping)"..., 1023) = 742
+close(6)                                = 0
+stat64("/proc/1331", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1331/stat", O_RDONLY)       = 6
+read(6, "1331 (perl) S 1 1331 1331 0 -1 4"..., 1023) = 193
+close(6)                                = 0
+open("/proc/1331/status", O_RDONLY)     = 6
+read(6, "Name:\tperl\nState:\tS (sleeping)\nT"..., 1023) = 733
+close(6)                                = 0
+stat64("/proc/1332", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1332/stat", O_RDONLY)       = 6
+read(6, "1332 (perl) S 1331 1332 1332 0 -"..., 1023) = 199
+close(6)                                = 0
+open("/proc/1332/status", O_RDONLY)     = 6
+read(6, "Name:\tperl\nState:\tS (sleeping)\nT"..., 1023) = 737
+close(6)                                = 0
+stat64("/proc/1349", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1349/stat", O_RDONLY)       = 6
+read(6, "1349 (courierlogger) S 1 1349 11"..., 1023) = 196
+close(6)                                = 0
+open("/proc/1349/status", O_RDONLY)     = 6
+read(6, "Name:\tcourierlogger\nState:\tS (sl"..., 1023) = 727
+close(6)                                = 0
+stat64("/proc/1350", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1350/stat", O_RDONLY)       = 6
+read(6, "1350 (authdaemond) S 1349 1349 1"..., 1023) = 201
+close(6)                                = 0
+open("/proc/1350/status", O_RDONLY)     = 6
+read(6, "Name:\tauthdaemond\nState:\tS (slee"..., 1023) = 728
+close(6)                                = 0
+stat64("/proc/1353", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1353/stat", O_RDONLY)       = 6
+read(6, "1353 (authdaemond) S 1350 1349 1"..., 1023) = 194
+close(6)                                = 0
+open("/proc/1353/status", O_RDONLY)     = 6
+read(6, "Name:\tauthdaemond\nState:\tS (slee"..., 1023) = 726
+close(6)                                = 0
+stat64("/proc/1354", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1354/stat", O_RDONLY)       = 6
+read(6, "1354 (authdaemond) S 1350 1349 1"..., 1023) = 194
+close(6)                                = 0
+open("/proc/1354/status", O_RDONLY)     = 6
+read(6, "Name:\tauthdaemond\nState:\tS (slee"..., 1023) = 726
+close(6)                                = 0
+stat64("/proc/1355", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1355/stat", O_RDONLY)       = 6
+read(6, "1355 (authdaemond) S 1350 1349 1"..., 1023) = 194
+close(6)                                = 0
+open("/proc/1355/status", O_RDONLY)     = 6
+read(6, "Name:\tauthdaemond\nState:\tS (slee"..., 1023) = 726
+close(6)                                = 0
+stat64("/proc/1356", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1356/stat", O_RDONLY)       = 6
+read(6, "1356 (authdaemond) S 1350 1349 1"..., 1023) = 194
+close(6)                                = 0
+open("/proc/1356/status", O_RDONLY)     = 6
+read(6, "Name:\tauthdaemond\nState:\tS (slee"..., 1023) = 726
+close(6)                                = 0
+stat64("/proc/1357", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1357/stat", O_RDONLY)       = 6
+read(6, "1357 (authdaemond) S 1350 1349 1"..., 1023) = 194
+close(6)                                = 0
+open("/proc/1357/status", O_RDONLY)     = 6
+read(6, "Name:\tauthdaemond\nState:\tS (slee"..., 1023) = 726
+close(6)                                = 0
+stat64("/proc/1404", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1404/stat", O_RDONLY)       = 6
+read(6, "1404 (udevd) S 368 368 368 0 -1 "..., 1023) = 192
+close(6)                                = 0
+open("/proc/1404/status", O_RDONLY)     = 6
+read(6, "Name:\tudevd\nState:\tS (sleeping)\n"..., 1023) = 718
+close(6)                                = 0
+stat64("/proc/1448", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1448/stat", O_RDONLY)       = 6
+read(6, "1448 (winbindd) S 1 1448 1448 0 "..., 1023) = 192
+close(6)                                = 0
+open("/proc/1448/status", O_RDONLY)     = 6
+read(6, "Name:\twinbindd\nState:\tS (sleepin"..., 1023) = 720
+close(6)                                = 0
+stat64("/proc/1465", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1465/stat", O_RDONLY)       = 6
+read(6, "1465 (winbindd) S 1448 1448 1448"..., 1023) = 195
+close(6)                                = 0
+open("/proc/1465/status", O_RDONLY)     = 6
+read(6, "Name:\twinbindd\nState:\tS (sleepin"..., 1023) = 723
+close(6)                                = 0
+stat64("/proc/1518", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1518/stat", O_RDONLY)       = 6
+read(6, "1518 (dbus-launch) S 1 1513 1513"..., 1023) = 194
+close(6)                                = 0
+open("/proc/1518/status", O_RDONLY)     = 6
+read(6, "Name:\tdbus-launch\nState:\tS (slee"..., 1023) = 743
+close(6)                                = 0
+stat64("/proc/1582", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1582/stat", O_RDONLY)       = 6
+read(6, "1582 (apache2) S 1 1582 1582 0 -"..., 1023) = 202
+close(6)                                = 0
+open("/proc/1582/status", O_RDONLY)     = 6
+read(6, "Name:\tapache2\nState:\tS (sleeping"..., 1023) = 721
+close(6)                                = 0
+stat64("/proc/1593", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1593/stat", O_RDONLY)       = 6
+read(6, "1593 (judged) S 1 1592 1592 0 -1"..., 1023) = 198
+close(6)                                = 0
+open("/proc/1593/status", O_RDONLY)     = 6
+read(6, "Name:\tjudged\nState:\tS (sleeping)"..., 1023) = 720
+close(6)                                = 0
+stat64("/proc/1632", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1632/stat", O_RDONLY)       = 6
+read(6, "1632 (apache2) S 1582 1582 1582 "..., 1023) = 199
+close(6)                                = 0
+open("/proc/1632/status", O_RDONLY)     = 6
+read(6, "Name:\tapache2\nState:\tS (sleeping"..., 1023) = 751
+close(6)                                = 0
+stat64("/proc/1633", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1633/stat", O_RDONLY)       = 6
+read(6, "1633 (apache2) S 1582 1582 1582 "..., 1023) = 200
+close(6)                                = 0
+open("/proc/1633/status", O_RDONLY)     = 6
+read(6, "Name:\tapache2\nState:\tS (sleeping"..., 1023) = 751
+close(6)                                = 0
+stat64("/proc/1634", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1634/stat", O_RDONLY)       = 6
+read(6, "1634 (apache2) S 1582 1582 1582 "..., 1023) = 201
+close(6)                                = 0
+open("/proc/1634/status", O_RDONLY)     = 6
+read(6, "Name:\tapache2\nState:\tS (sleeping"..., 1023) = 751
+close(6)                                = 0
+stat64("/proc/1635", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1635/stat", O_RDONLY)       = 6
+read(6, "1635 (apache2) S 1582 1582 1582 "..., 1023) = 200
+close(6)                                = 0
+open("/proc/1635/status", O_RDONLY)     = 6
+read(6, "Name:\tapache2\nState:\tS (sleeping"..., 1023) = 751
+close(6)                                = 0
+stat64("/proc/1636", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1636/stat", O_RDONLY)       = 6
+read(6, "1636 (apache2) S 1582 1582 1582 "..., 1023) = 202
+close(6)                                = 0
+open("/proc/1636/status", O_RDONLY)     = 6
+read(6, "Name:\tapache2\nState:\tS (sleeping"..., 1023) = 751
+close(6)                                = 0
+stat64("/proc/1678", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1678/stat", O_RDONLY)       = 6
+read(6, "1678 (gdm-session-wor) S 1181 10"..., 1023) = 205
+close(6)                                = 0
+open("/proc/1678/status", O_RDONLY)     = 6
+read(6, "Name:\tgdm-session-wor\nState:\tS ("..., 1023) = 771
+close(6)                                = 0
+stat64("/proc/1684", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1684/stat", O_RDONLY)       = 6
+read(6, "1684 (upowerd) S 1 1024 1024 0 -"..., 1023) = 190
+close(6)                                = 0
+open("/proc/1684/status", O_RDONLY)     = 6
+read(6, "Name:\tupowerd\nState:\tS (sleeping"..., 1023) = 722
+close(6)                                = 0
+stat64("/proc/1708", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1708/stat", O_RDONLY)       = 6
+read(6, "1708 (polkitd) S 1 1024 1024 0 -"..., 1023) = 189
+close(6)                                = 0
+open("/proc/1708/status", O_RDONLY)     = 6
+read(6, "Name:\tpolkitd\nState:\tS (sleeping"..., 1023) = 723
+close(6)                                = 0
+stat64("/proc/1731", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1731/stat", O_RDONLY)       = 6
+read(6, "1731 (rtkit-daemon) S 1 1024 102"..., 1023) = 192
+close(6)                                = 0
+open("/proc/1731/status", O_RDONLY)     = 6
+read(6, "Name:\trtkit-daemon\nState:\tS (sle"..., 1023) = 742
+close(6)                                = 0
+stat64("/proc/1800", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/1800/stat", O_RDONLY)       = 6
+read(6, "1800 (getty) S 1 1800 1800 1025 "..., 1023) = 188
+close(6)                                = 0
+open("/proc/1800/status", O_RDONLY)     = 6
+read(6, "Name:\tgetty\nState:\tS (sleeping)\n"..., 1023) = 716
+close(6)                                = 0
+stat64("/proc/2802", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2802/stat", O_RDONLY)       = 6
+read(6, "2802 (gnome-keyring-d) S 1 1037 "..., 1023) = 204
+close(6)                                = 0
+open("/proc/2802/status", O_RDONLY)     = 6
+read(6, "Name:\tgnome-keyring-d\nState:\tS ("..., 1023) = 779
+close(6)                                = 0
+stat64("/proc/2821", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2821/stat", O_RDONLY)       = 6
+read(6, "2821 (lxsession) S 1678 2821 282"..., 1023) = 205
+close(6)                                = 0
+open("/proc/2821/status", O_RDONLY)     = 6
+read(6, "Name:\tlxsession\nState:\tS (sleepi"..., 1023) = 778
+close(6)                                = 0
+stat64("/proc/2853", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2853/stat", O_RDONLY)       = 6
+read(6, "2853 (ibus-daemon) S 2821 2853 2"..., 1023) = 206
+close(6)                                = 0
+open("/proc/2853/status", O_RDONLY)     = 6
+read(6, "Name:\tibus-daemon\nState:\tS (slee"..., 1023) = 784
+close(6)                                = 0
+stat64("/proc/2857", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2857/stat", O_RDONLY)       = 6
+read(6, "2857 (ssh-agent) S 2821 2857 285"..., 1023) = 192
+close(6)                                = 0
+open("/proc/2857/status", O_RDONLY)     = 6
+read(6, "Name:\tssh-agent\nState:\tS (sleepi"..., 1023) = 776
+close(6)                                = 0
+stat64("/proc/2860", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2860/stat", O_RDONLY)       = 6
+read(6, "2860 (dbus-launch) S 1 2821 2821"..., 1023) = 195
+close(6)                                = 0
+open("/proc/2860/status", O_RDONLY)     = 6
+read(6, "Name:\tdbus-launch\nState:\tS (slee"..., 1023) = 774
+close(6)                                = 0
+stat64("/proc/2861", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2861/stat", O_RDONLY)       = 6
+read(6, "2861 (dbus-daemon) S 1 2861 2861"..., 1023) = 190
+close(6)                                = 0
+open("/proc/2861/status", O_RDONLY)     = 6
+read(6, "Name:\tdbus-daemon\nState:\tS (slee"..., 1023) = 779
+close(6)                                = 0
+stat64("/proc/2867", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2867/stat", O_RDONLY)       = 6
+read(6, "2867 (openbox) S 2821 2821 2821 "..., 1023) = 209
+close(6)                                = 0
+open("/proc/2867/status", O_RDONLY)     = 6
+read(6, "Name:\topenbox\nState:\tS (sleeping"..., 1023) = 778
+close(6)                                = 0
+stat64("/proc/2872", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2872/stat", O_RDONLY)       = 6
+read(6, "2872 (lxpanel) S 2821 2821 2821 "..., 1023) = 208
+close(6)                                = 0
+open("/proc/2872/status", O_RDONLY)     = 6
+read(6, "Name:\tlxpanel\nState:\tS (sleeping"..., 1023) = 780
+close(6)                                = 0
+stat64("/proc/2874", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2874/stat", O_RDONLY)       = 6
+read(6, "2874 (pcmanfm) S 2821 2821 2821 "..., 1023) = 209
+close(6)                                = 0
+open("/proc/2874/status", O_RDONLY)     = 6
+read(6, "Name:\tpcmanfm\nState:\tS (sleeping"..., 1023) = 778
+close(6)                                = 0
+stat64("/proc/2875", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2875/stat", O_RDONLY)       = 6
+read(6, "2875 (polkit-gnome-au) S 2821 28"..., 1023) = 204
+close(6)                                = 0
+open("/proc/2875/status", O_RDONLY)     = 6
+read(6, "Name:\tpolkit-gnome-au\nState:\tS ("..., 1023) = 783
+close(6)                                = 0
+stat64("/proc/2876", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2876/stat", O_RDONLY)       = 6
+read(6, "2876 (ibus-gconf) S 2853 2853 28"..., 1023) = 201
+close(6)                                = 0
+open("/proc/2876/status", O_RDONLY)     = 6
+read(6, "Name:\tibus-gconf\nState:\tS (sleep"..., 1023) = 778
+close(6)                                = 0
+stat64("/proc/2878", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2878/stat", O_RDONLY)       = 6
+read(6, "2878 (python) S 2853 2853 2821 0"..., 1023) = 210
+close(6)                                = 0
+open("/proc/2878/status", O_RDONLY)     = 6
+read(6, "Name:\tpython\nState:\tS (sleeping)"..., 1023) = 780
+close(6)                                = 0
+stat64("/proc/2880", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2880/stat", O_RDONLY)       = 6
+read(6, "2880 (ibus-x11) S 1 2853 2821 0 "..., 1023) = 198
+close(6)                                = 0
+open("/proc/2880/status", O_RDONLY)     = 6
+read(6, "Name:\tibus-x11\nState:\tS (sleepin"..., 1023) = 775
+close(6)                                = 0
+stat64("/proc/2884", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2884/stat", O_RDONLY)       = 6
+read(6, "2884 (gconfd-2) S 1 2861 2861 0 "..., 1023) = 200
+close(6)                                = 0
+open("/proc/2884/status", O_RDONLY)     = 6
+read(6, "Name:\tgconfd-2\nState:\tS (sleepin"..., 1023) = 773
+close(6)                                = 0
+stat64("/proc/2886", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2886/stat", O_RDONLY)       = 6
+read(6, "2886 (update-notifier) S 1 2821 "..., 1023) = 213
+close(6)                                = 0
+open("/proc/2886/status", O_RDONLY)     = 6
+read(6, "Name:\tupdate-notifier\nState:\tS ("..., 1023) = 782
+close(6)                                = 0
+stat64("/proc/2888", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2888/stat", O_RDONLY)       = 6
+read(6, "2888 (menu-cached) S 1 2821 2821"..., 1023) = 200
+close(6)                                = 0
+open("/proc/2888/status", O_RDONLY)     = 6
+read(6, "Name:\tmenu-cached\nState:\tS (slee"..., 1023) = 777
+close(6)                                = 0
+stat64("/proc/2892", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2892/stat", O_RDONLY)       = 6
+read(6, "2892 (gvfsd) S 1 2861 2861 0 -1 "..., 1023) = 188
+close(6)                                = 0
+open("/proc/2892/status", O_RDONLY)     = 6
+read(6, "Name:\tgvfsd\nState:\tS (sleeping)\n"..., 1023) = 770
+close(6)                                = 0
+stat64("/proc/2903", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2903/stat", O_RDONLY)       = 6
+read(6, "2903 (gvfs-fuse-daemo) S 1 2903 "..., 1023) = 202
+close(6)                                = 0
+open("/proc/2903/status", O_RDONLY)     = 6
+read(6, "Name:\tgvfs-fuse-daemo\nState:\tS ("..., 1023) = 778
+close(6)                                = 0
+stat64("/proc/2911", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2911/stat", O_RDONLY)       = 6
+read(6, "2911 (sh) S 1 2821 2821 0 -1 420"..., 1023) = 182
+close(6)                                = 0
+open("/proc/2911/status", O_RDONLY)     = 6
+read(6, "Name:\tsh\nState:\tS (sleeping)\nTgi"..., 1023) = 765
+close(6)                                = 0
+stat64("/proc/2912", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2912/stat", O_RDONLY)       = 6
+read(6, "2912 (ubuntuone-launc) S 2911 28"..., 1023) = 216
+close(6)                                = 0
+open("/proc/2912/status", O_RDONLY)     = 6
+read(6, "Name:\tubuntuone-launc\nState:\tS ("..., 1023) = 784
+close(6)                                = 0
+stat64("/proc/2915", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2915/stat", O_RDONLY)       = 6
+read(6, "2915 (pulseaudio) S 1 2915 2915 "..., 1023) = 207
+close(6)                                = 0
+open("/proc/2915/status", O_RDONLY)     = 6
+read(6, "Name:\tpulseaudio\nState:\tS (sleep"..., 1023) = 779
+close(6)                                = 0
+stat64("/proc/2917", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2917/stat", O_RDONLY)       = 6
+read(6, "2917 (gconf-helper) S 2915 2915 "..., 1023) = 200
+close(6)                                = 0
+open("/proc/2917/status", O_RDONLY)     = 6
+read(6, "Name:\tgconf-helper\nState:\tS (sle"..., 1023) = 779
+close(6)                                = 0
+stat64("/proc/2929", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2929/stat", O_RDONLY)       = 6
+read(6, "2929 (udisks-daemon) S 1 1024 10"..., 1023) = 204
+close(6)                                = 0
+open("/proc/2929/status", O_RDONLY)     = 6
+read(6, "Name:\tudisks-daemon\nState:\tS (sl"..., 1023) = 730
+close(6)                                = 0
+stat64("/proc/2930", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2930/stat", O_RDONLY)       = 6
+read(6, "2930 (ibus-engine-pin) S 2853 28"..., 1023) = 207
+close(6)                                = 0
+open("/proc/2930/status", O_RDONLY)     = 6
+read(6, "Name:\tibus-engine-pin\nState:\tS ("..., 1023) = 786
+close(6)                                = 0
+stat64("/proc/2933", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2933/stat", O_RDONLY)       = 6
+read(6, "2933 (udisks-daemon) S 2929 1024"..., 1023) = 198
+close(6)                                = 0
+open("/proc/2933/status", O_RDONLY)     = 6
+read(6, "Name:\tudisks-daemon\nState:\tS (sl"..., 1023) = 733
+close(6)                                = 0
+stat64("/proc/2949", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2949/stat", O_RDONLY)       = 6
+read(6, "2949 (gvfs-gdu-volume) S 1 2861 "..., 1023) = 200
+close(6)                                = 0
+open("/proc/2949/status", O_RDONLY)     = 6
+read(6, "Name:\tgvfs-gdu-volume\nState:\tS ("..., 1023) = 782
+close(6)                                = 0
+stat64("/proc/2951", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2951/stat", O_RDONLY)       = 6
+read(6, "2951 (gvfs-gphoto2-vo) S 1 2861 "..., 1023) = 197
+close(6)                                = 0
+open("/proc/2951/status", O_RDONLY)     = 6
+read(6, "Name:\tgvfs-gphoto2-vo\nState:\tS ("..., 1023) = 780
+close(6)                                = 0
+stat64("/proc/2953", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2953/stat", O_RDONLY)       = 6
+read(6, "2953 (gvfs-afc-volume) S 1 2861 "..., 1023) = 197
+close(6)                                = 0
+open("/proc/2953/status", O_RDONLY)     = 6
+read(6, "Name:\tgvfs-afc-volume\nState:\tS ("..., 1023) = 780
+close(6)                                = 0
+stat64("/proc/2956", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/2956/stat", O_RDONLY)       = 6
+read(6, "2956 (system-service-) S 1 1024 "..., 1023) = 205
+close(6)                                = 0
+open("/proc/2956/status", O_RDONLY)     = 6
+read(6, "Name:\tsystem-service-\nState:\tS ("..., 1023) = 731
+close(6)                                = 0
+stat64("/proc/3020", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3020/stat", O_RDONLY)       = 6
+read(6, "3020 (notify-osd) S 1 2861 2861 "..., 1023) = 195
+close(6)                                = 0
+open("/proc/3020/status", O_RDONLY)     = 6
+read(6, "Name:\tnotify-osd\nState:\tS (sleep"..., 1023) = 776
+close(6)                                = 0
+stat64("/proc/3024", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3024/stat", O_RDONLY)       = 6
+read(6, "3024 (gnome-terminal) S 1 2821 2"..., 1023) = 213
+close(6)                                = 0
+open("/proc/3024/status", O_RDONLY)     = 6
+read(6, "Name:\tgnome-terminal\nState:\tS (s"..., 1023) = 785
+close(6)                                = 0
+stat64("/proc/3029", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3029/stat", O_RDONLY)       = 6
+read(6, "3029 (gnome-pty-helpe) S 3024 28"..., 1023) = 211
+close(6)                                = 0
+open("/proc/3029/status", O_RDONLY)     = 6
+read(6, "Name:\tgnome-pty-helpe\nState:\tS ("..., 1023) = 775
+close(6)                                = 0
+stat64("/proc/3030", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3030/stat", O_RDONLY)       = 6
+read(6, "3030 (bash) S 3024 3030 3030 348"..., 1023) = 228
+close(6)                                = 0
+open("/proc/3030/status", O_RDONLY)     = 6
+read(6, "Name:\tbash\nState:\tS (sleeping)\nT"..., 1023) = 774
+close(6)                                = 0
+stat64("/proc/3053", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3053/stat", O_RDONLY)       = 6
+read(6, "3053 (gvfsd-trash) S 1 2861 2861"..., 1023) = 194
+close(6)                                = 0
+open("/proc/3053/status", O_RDONLY)     = 6
+read(6, "Name:\tgvfsd-trash\nState:\tS (slee"..., 1023) = 777
+close(6)                                = 0
+stat64("/proc/3081", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3081/stat", O_RDONLY)       = 6
+read(6, "3081 (mount.ntfs) S 1 3081 3081 "..., 1023) = 200
+close(6)                                = 0
+open("/proc/3081/status", O_RDONLY)     = 6
+read(6, "Name:\tmount.ntfs\nState:\tS (sleep"..., 1023) = 728
+close(6)                                = 0
+stat64("/proc/3145", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3145/stat", O_RDONLY)       = 6
+read(6, "3145 (firefox) S 1 2821 2821 0 -"..., 1023) = 189
+close(6)                                = 0
+open("/proc/3145/status", O_RDONLY)     = 6
+read(6, "Name:\tfirefox\nState:\tS (sleeping"..., 1023) = 771
+close(6)                                = 0
+stat64("/proc/3149", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3149/stat", O_RDONLY)       = 6
+read(6, "3149 (run-mozilla.sh) S 3145 282"..., 1023) = 199
+close(6)                                = 0
+open("/proc/3149/status", O_RDONLY)     = 6
+read(6, "Name:\trun-mozilla.sh\nState:\tS (s"..., 1023) = 780
+close(6)                                = 0
+stat64("/proc/3153", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3153/stat", O_RDONLY)       = 6
+read(6, "3153 (firefox-bin) S 3149 2821 2"..., 1023) = 223
+close(6)                                = 0
+open("/proc/3153/status", O_RDONLY)     = 6
+read(6, "Name:\tfirefox-bin\nState:\tS (slee"..., 1023) = 789
+close(6)                                = 0
+stat64("/proc/3185", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3185/stat", O_RDONLY)       = 6
+read(6, "3185 (apache2) S 1582 1582 1582 "..., 1023) = 199
+close(6)                                = 0
+open("/proc/3185/status", O_RDONLY)     = 6
+read(6, "Name:\tapache2\nState:\tS (sleeping"..., 1023) = 750
+close(6)                                = 0
+stat64("/proc/3189", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3189/stat", O_RDONLY)       = 6
+read(6, "3189 (apache2) S 1582 1582 1582 "..., 1023) = 200
+close(6)                                = 0
+open("/proc/3189/status", O_RDONLY)     = 6
+read(6, "Name:\tapache2\nState:\tS (sleeping"..., 1023) = 751
+close(6)                                = 0
+stat64("/proc/3191", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3191/stat", O_RDONLY)       = 6
+read(6, "3191 (apache2) S 1582 1582 1582 "..., 1023) = 200
+close(6)                                = 0
+open("/proc/3191/status", O_RDONLY)     = 6
+read(6, "Name:\tapache2\nState:\tS (sleeping"..., 1023) = 751
+close(6)                                = 0
+stat64("/proc/3192", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3192/stat", O_RDONLY)       = 6
+read(6, "3192 (apache2) S 1582 1582 1582 "..., 1023) = 200
+close(6)                                = 0
+open("/proc/3192/status", O_RDONLY)     = 6
+read(6, "Name:\tapache2\nState:\tS (sleeping"..., 1023) = 751
+close(6)                                = 0
+stat64("/proc/3355", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/3355/stat", O_RDONLY)       = 6
+read(6, "3355 (rapidsvn) S 1 2821 2821 0 "..., 1023) = 210
+close(6)                                = 0
+open("/proc/3355/status", O_RDONLY)     = 6
+read(6, "Name:\trapidsvn\nState:\tS (sleepin"..., 1023) = 777
+close(6)                                = 0
+stat64("/proc/4328", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/4328/stat", O_RDONLY)       = 6
+read(6, "4328 (apache2) S 1582 1582 1582 "..., 1023) = 200
+close(6)                                = 0
+open("/proc/4328/status", O_RDONLY)     = 6
+read(6, "Name:\tapache2\nState:\tS (sleeping"..., 1023) = 750
+close(6)                                = 0
+stat64("/proc/5011", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/5011/stat", O_RDONLY)       = 6
+read(6, "5011 (gvfsd-metadata) S 1 2861 2"..., 1023) = 196
+close(6)                                = 0
+open("/proc/5011/status", O_RDONLY)     = 6
+read(6, "Name:\tgvfsd-metadata\nState:\tS (s"..., 1023) = 779
+close(6)                                = 0
+stat64("/proc/5098", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/5098/stat", O_RDONLY)       = 6
+read(6, "5098 (su) S 3030 5098 3030 34816"..., 1023) = 205
+close(6)                                = 0
+open("/proc/5098/status", O_RDONLY)     = 6
+read(6, "Name:\tsu\nState:\tS (sleeping)\nTgi"..., 1023) = 721
+close(6)                                = 0
+fstat64(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 0), ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7447000
+write(1, "  PID TTY          TIME CMD\n", 28) = 28
+open("/proc/tty/drivers", O_RDONLY)     = 6
+read(6, "/dev/tty             /dev/tty   "..., 9999) = 466
+close(6)                                = 0
+stat64("/dev/pts0", 0xbfe69fa4)         = -1 ENOENT (No such file or directory)
+stat64("/dev/pts", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+readlink("/proc/5098/fd/2", "/dev/pts/0", 127) = 10
+stat64("/dev/pts/0", {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 0), ...}) = 0
+open("/usr/lib/gconv/gconv-modules.cache", O_RDONLY) = 6
+fstat64(6, {st_mode=S_IFREG|0644, st_size=26048, ...}) = 0
+mmap2(NULL, 26048, PROT_READ, MAP_SHARED, 6, 0) = 0xb7440000
+close(6)                                = 0
+write(1, " 5098 pts/0    00:00:00 su\n", 27) = 27
+stat64("/proc/5106", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/5106/stat", O_RDONLY)       = 6
+read(6, "5106 (bash) S 5098 5106 3030 348"..., 1023) = 225
+close(6)                                = 0
+open("/proc/5106/status", O_RDONLY)     = 6
+read(6, "Name:\tbash\nState:\tS (sleeping)\nT"..., 1023) = 724
+close(6)                                = 0
+stat64("/dev/pts0", 0xbfe69fa4)         = -1 ENOENT (No such file or directory)
+stat64("/dev/pts", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+readlink("/proc/5106/fd/2", "/dev/pts/0", 127) = 10
+stat64("/dev/pts/0", {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 0), ...}) = 0
+write(1, " 5106 pts/0    00:00:00 bash\n", 29) = 29
+stat64("/proc/5155", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/5155/stat", O_RDONLY)       = 6
+read(6, "5155 (gtk-gnash) S 3153 2821 282"..., 1023) = 207
+close(6)                                = 0
+open("/proc/5155/status", O_RDONLY)     = 6
+read(6, "Name:\tgtk-gnash\nState:\tS (sleepi"..., 1023) = 783
+close(6)                                = 0
+stat64("/proc/5428", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/5428/stat", O_RDONLY)       = 6
+read(6, "5428 (strace) S 5106 5428 3030 3"..., 1023) = 206
+close(6)                                = 0
+open("/proc/5428/status", O_RDONLY)     = 6
+read(6, "Name:\tstrace\nState:\tS (sleeping)"..., 1023) = 728
+close(6)                                = 0
+stat64("/dev/pts0", 0xbfe69fa4)         = -1 ENOENT (No such file or directory)
+stat64("/dev/pts", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+readlink("/proc/5428/fd/2", "/home/judge/data/1477/test2.in", 127) = 30
+stat64("/home/judge/data/1477/test2.in", {st_mode=S_IFREG|0644, st_size=65246, ...}) = 0
+stat64("/dev/pts/0", {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 0), ...}) = 0
+write(1, " 5428 pts/0    00:00:00 strace\n", 31) = 31
+stat64("/proc/5429", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+open("/proc/5429/stat", O_RDONLY)       = 6
+read(6, "5429 (ps) R 5428 5428 3030 34816"..., 1023) = 192
+close(6)                                = 0
+open("/proc/5429/status", O_RDONLY)     = 6
+read(6, "Name:\tps\nState:\tR (running)\nTgid"..., 1023) = 723
+close(6)                                = 0
+stat64("/dev/pts0", 0xbfe69fa4)         = -1 ENOENT (No such file or directory)
+stat64("/dev/pts", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+readlink("/proc/5429/fd/2", "/home/judge/data/1477/test2.in", 127) = 30
+stat64("/home/judge/data/1477/test2.in", {st_mode=S_IFREG|0644, st_size=66046, ...}) = 0
+stat64("/dev/pts/0", {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 0), ...}) = 0
+write(1, " 5429 pts/0    00:00:00 ps\n", 27) = 27
+getdents(5, /* 0 entries */, 32768)     = 0
+close(5)                                = 0
+exit_group(0)                           = ?
+]]></test_input>
+<test_output><![CDATA[access
+brk
+close
+execve
+exit_group
+fcntl64
+fstat64
+getdents
+geteuid32
+ioctl
+lseek
+mmap2
+mprotect
+munmap
+open
+read
+readlink
+rt_sigaction
+set_thread_area
+stat64
+time
+write
+]]></test_output>
+<test_input><![CDATA[execve("/bin/ls", ["ls"], [/* 25 vars */]) = 0
+brk(0)                                  = 0x8249000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+mmap2(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7857000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=115704, ...}) = 0
+mmap2(NULL, 115704, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb783a000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libselinux.so.1", O_RDONLY)  = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\260G\0\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0644, st_size=108248, ...}) = 0
+mmap2(NULL, 113532, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x60f000
+mmap2(0x629000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x19) = 0x629000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/librt.so.1", O_RDONLY)       = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\300\30\0\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0644, st_size=30684, ...}) = 0
+mmap2(NULL, 33364, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x110000
+mmap2(0x117000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x6) = 0x117000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libacl.so.1", O_RDONLY)      = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\320\26\0\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0644, st_size=26216, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7839000
+mmap2(NULL, 28964, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xeed000
+mmap2(0xef3000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x5) = 0xef3000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libc.so.6", O_RDONLY)        = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0@n\1\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0755, st_size=1421892, ...}) = 0
+mmap2(NULL, 1427880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x119000
+mmap2(0x270000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x157) = 0x270000
+mmap2(0x273000, 10664, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x273000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libdl.so.2", O_RDONLY)       = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0@\n\0\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0644, st_size=9736, ...}) = 0
+mmap2(NULL, 12408, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x825000
+mmap2(0x827000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1) = 0x827000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libpthread.so.0", O_RDONLY)  = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\360L\0\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0755, st_size=121578, ...}) = 0
+mmap2(NULL, 102920, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x82e000
+mprotect(0x843000, 4096, PROT_NONE)     = 0
+mmap2(0x844000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x15) = 0x844000
+mmap2(0x846000, 4616, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x846000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libattr.so.1", O_RDONLY)     = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\360\r\0\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0644, st_size=17860, ...}) = 0
+mmap2(NULL, 20588, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x607000
+mmap2(0x60b000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x3) = 0x60b000
+close(3)                                = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7838000
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7837000
+set_thread_area({entry_number:-1 -> 6, base_addr:0xb7837720, limit:1048575, seg_32bit:1, contents:0, read_exec_only:0, limit_in_pages:1, seg_not_present:0, useable:1}) = 0
+mprotect(0x60b000, 4096, PROT_READ)     = 0
+mprotect(0x844000, 4096, PROT_READ)     = 0
+mprotect(0x827000, 4096, PROT_READ)     = 0
+mprotect(0x270000, 8192, PROT_READ)     = 0
+mprotect(0xef3000, 4096, PROT_READ)     = 0
+mprotect(0x117000, 4096, PROT_READ)     = 0
+mprotect(0x629000, 4096, PROT_READ)     = 0
+mprotect(0x805f000, 4096, PROT_READ)    = 0
+mprotect(0x4b7000, 4096, PROT_READ)     = 0
+munmap(0xb783a000, 115704)              = 0
+set_tid_address(0xb7837788)             = 5431
+set_robust_list(0xb7837790, 0xc)        = 0
+futex(0xbfeaf540, FUTEX_WAKE_PRIVATE, 1) = 0
+futex(0xbfeaf540, FUTEX_WAIT_BITSET_PRIVATE|FUTEX_CLOCK_REALTIME, 1, NULL, bfeaf550) = -1 EAGAIN (Resource temporarily unavailable)
+rt_sigaction(SIGRTMIN, {0x8326e0, [], SA_SIGINFO}, NULL, 8) = 0
+rt_sigaction(SIGRT_1, {0x832bc0, [], SA_RESTART|SA_SIGINFO}, NULL, 8) = 0
+rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+getrlimit(RLIMIT_STACK, {rlim_cur=8192*1024, rlim_max=RLIM_INFINITY}) = 0
+uname({sys="Linux", node="d620", ...})  = 0
+statfs64("/selinux", 84, {f_type="REISERFS_SUPER_MAGIC", f_bsize=4096, f_blocks=7301296, f_bfree=1723809, f_bavail=1723809, f_files=0, f_ffree=0, f_fsid={1183916417, -1171551712}, f_namelen=255, f_frsize=4096}) = 0
+brk(0)                                  = 0x8249000
+brk(0x826a000)                          = 0x826a000
+open("/proc/filesystems", O_RDONLY|O_LARGEFILE) = 3
+fstat64(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7856000
+read(3, "nodev\tsysfs\nnodev\trootfs\nnodev\tb"..., 1024) = 325
+read(3, "", 1024)                       = 0
+close(3)                                = 0
+munmap(0xb7856000, 4096)                = 0
+open("/usr/lib/locale/locale-archive", O_RDONLY|O_LARGEFILE) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=5897488, ...}) = 0
+mmap2(NULL, 2097152, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb7637000
+mmap2(NULL, 1650688, PROT_READ, MAP_PRIVATE, 3, 0x40b) = 0xb74a4000
+close(3)                                = 0
+ioctl(1, SNDCTL_TMR_TIMEBASE or TCGETS, {B38400 opost isig icanon echo ...}) = 0
+ioctl(1, TIOCGWINSZ, {ws_row=35, ws_col=112, ws_xpixel=0, ws_ypixel=0}) = 0
+open(".", O_RDONLY|O_NONBLOCK|O_LARGEFILE|O_DIRECTORY|O_CLOEXEC) = 3
+fcntl64(3, F_GETFD)                     = 0x1 (flags FD_CLOEXEC)
+getdents64(3, /* 8 entries */, 32768)   = 240
+getdents64(3, /* 0 entries */, 32768)   = 0
+close(3)                                = 0
+fstat64(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 0), ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb74a3000
+write(1, "sample.in  sample.out  test2.in "..., 61) = 61
+close(1)                                = 0
+munmap(0xb74a3000, 4096)                = 0
+close(2)                                = 0
+exit_group(0)                           = ?
+]]></test_input>
+<test_output><![CDATA[access
+brk
+close
+execve
+exit_group
+fcntl64
+fstat64
+futex
+getdents64
+getrlimit
+ioctl
+mmap2
+mprotect
+munmap
+open
+read
+rt_sigaction
+rt_sigprocmask
+set_robust_list
+set_thread_area
+set_tid_address
+statfs64
+uname
+write
+]]></test_output>
+<test_input><![CDATA[execve("/usr/bin/free", ["free"], [/* 25 vars */]) = 0
+brk(0)                                  = 0x845d000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+mmap2(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb77bb000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=115704, ...}) = 0
+mmap2(NULL, 115704, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb779e000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libproc-3.2.8.so", O_RDONLY) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\0)\0\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0644, st_size=63244, ...}) = 0
+mmap2(NULL, 136600, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x9ea000
+mmap2(0x9f8000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xe) = 0x9f8000
+mmap2(0x9fa000, 71064, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x9fa000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libc.so.6", O_RDONLY)        = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0@n\1\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0755, st_size=1421892, ...}) = 0
+mmap2(NULL, 1427880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xe68000
+mmap2(0xfbf000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x157) = 0xfbf000
+mmap2(0xfc2000, 10664, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xfc2000
+close(3)                                = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb779d000
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb779c000
+set_thread_area({entry_number:-1 -> 6, base_addr:0xb779db30, limit:1048575, seg_32bit:1, contents:0, read_exec_only:0, limit_in_pages:1, seg_not_present:0, useable:1}) = 0
+mprotect(0xfbf000, 8192, PROT_READ)     = 0
+mprotect(0x9f8000, 4096, PROT_READ)     = 0
+mprotect(0x804a000, 4096, PROT_READ)    = 0
+mprotect(0x636000, 4096, PROT_READ)     = 0
+munmap(0xb779e000, 115704)              = 0
+brk(0)                                  = 0x845d000
+brk(0x847e000)                          = 0x847e000
+open("/proc/version", O_RDONLY)         = 3
+fstat64(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb77ba000
+read(3, "Linux version 2.6.35-25-generic "..., 1024) = 145
+close(3)                                = 0
+munmap(0xb77ba000, 4096)                = 0
+open("/proc/stat", O_RDONLY|O_CLOEXEC)  = 3
+read(3, "cpu  43871 14523 14098 886256 44"..., 8192) = 1358
+close(3)                                = 0
+open("/proc/meminfo", O_RDONLY)         = 3
+lseek(3, 0, SEEK_SET)                   = 0
+read(3, "MemTotal:        1541788 kB\nMemF"..., 2047) = 1248
+fstat64(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 0), ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb77ba000
+write(1, "             total       used   "..., 74) = 74
+write(1, "Mem:       1541788    1274596   "..., 74) = 74
+write(1, "-/+ buffers/cache:     379304   "..., 41) = 41
+write(1, "Swap:            0          0   "..., 41) = 41
+exit_group(0)                           = ?
+]]></test_input>
+<test_output><![CDATA[access
+brk
+close
+execve
+exit_group
+fstat64
+lseek
+mmap2
+mprotect
+munmap
+open
+read
+set_thread_area
+write
+]]></test_output>
+<test_input><![CDATA[execve("/bin/df", ["df"], [/* 25 vars */]) = 0
+brk(0)                                  = 0x9a76000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+mmap2(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7832000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=115704, ...}) = 0
+mmap2(NULL, 115704, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb7815000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libc.so.6", O_RDONLY)        = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0@n\1\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0755, st_size=1421892, ...}) = 0
+mmap2(NULL, 1427880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xe2d000
+mmap2(0xf84000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x157) = 0xf84000
+mmap2(0xf87000, 10664, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xf87000
+close(3)                                = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7814000
+set_thread_area({entry_number:-1 -> 6, base_addr:0xb78148d0, limit:1048575, seg_32bit:1, contents:0, read_exec_only:0, limit_in_pages:1, seg_not_present:0, useable:1}) = 0
+mprotect(0xf84000, 8192, PROT_READ)     = 0
+mprotect(0x8056000, 4096, PROT_READ)    = 0
+mprotect(0x450000, 4096, PROT_READ)     = 0
+munmap(0xb7815000, 115704)              = 0
+brk(0)                                  = 0x9a76000
+brk(0x9a97000)                          = 0x9a97000
+open("/usr/lib/locale/locale-archive", O_RDONLY|O_LARGEFILE) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=5897488, ...}) = 0
+mmap2(NULL, 2097152, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb7614000
+mmap2(NULL, 1650688, PROT_READ, MAP_PRIVATE, 3, 0x40b) = 0xb7481000
+close(3)                                = 0
+open("/etc/mtab", O_RDONLY)             = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=724, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7480000
+read(3, "/dev/sda6 / reiserfs rw,relatime"..., 4096) = 724
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+munmap(0xb7480000, 4096)                = 0
+statfs64("/", 84, {f_type="REISERFS_SUPER_MAGIC", f_bsize=4096, f_blocks=7301296, f_bfree=1723808, f_bavail=1723808, f_files=0, f_ffree=0, f_fsid={1183916417, -1171551712}, f_namelen=255, f_frsize=4096}) = 0
+open("/usr/share/locale/locale.alias", O_RDONLY) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=2570, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7480000
+read(3, "# Locale name alias data base.\n#"..., 4096) = 2570
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+munmap(0xb7480000, 4096)                = 0
+open("/usr/share/locale/zh_CN/LC_MESSAGES/coreutils.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale/zh/LC_MESSAGES/coreutils.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale-langpack/zh_CN/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=276554, ...}) = 0
+mmap2(NULL, 276554, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb743d000
+close(3)                                = 0
+open("/usr/lib/gconv/gconv-modules.cache", O_RDONLY) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=26048, ...}) = 0
+mmap2(NULL, 26048, PROT_READ, MAP_SHARED, 3, 0) = 0xb7436000
+close(3)                                = 0
+fstat64(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 0), ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7435000
+write(1, "\346\226\207\344\273\266\347\263\273\347\273\237           1K-\345\235\227   "..., 73) = 73
+write(1, "/dev/sda6             29205184  "..., 58) = 58
+statfs64("/sys", 84, {f_type="SYSFS_MAGIC", f_bsize=4096, f_blocks=0, f_bfree=0, f_bavail=0, f_files=0, f_ffree=0, f_fsid={0, 0}, f_namelen=255, f_frsize=4096}) = 0
+statfs64("/sys/fs/fuse/connections", 84, {f_type=0x65735543, f_bsize=4096, f_blocks=0, f_bfree=0, f_bavail=0, f_files=0, f_ffree=0, f_fsid={0, 0}, f_namelen=255, f_frsize=4096}) = 0
+statfs64("/sys/kernel/debug", 84, {f_type=0x64626720, f_bsize=4096, f_blocks=0, f_bfree=0, f_bavail=0, f_files=0, f_ffree=0, f_fsid={0, 0}, f_namelen=255, f_frsize=4096}) = 0
+statfs64("/sys/kernel/security", 84, {f_type=0x73636673, f_bsize=4096, f_blocks=0, f_bfree=0, f_bavail=0, f_files=0, f_ffree=0, f_fsid={0, 0}, f_namelen=255, f_frsize=4096}) = 0
+statfs64("/dev", 84, {f_type=0x1021994, f_bsize=4096, f_blocks=191325, f_bfree=191253, f_bavail=191253, f_files=191325, f_ffree=190546, f_fsid={0, 0}, f_namelen=255, f_frsize=4096}) = 0
+write(1, "none                    765300  "..., 61) = 61
+statfs64("/dev/pts", 84, {f_type="DEVPTS_SUPER_MAGIC", f_bsize=4096, f_blocks=0, f_bfree=0, f_bavail=0, f_files=0, f_ffree=0, f_fsid={0, 0}, f_namelen=255, f_frsize=4096}) = 0
+statfs64("/dev/shm", 84, {f_type=0x1021994, f_bsize=4096, f_blocks=192723, f_bfree=192581, f_bavail=192581, f_files=192723, f_ffree=192712, f_fsid={0, 0}, f_namelen=255, f_frsize=4096}) = 0
+write(1, "none                    770892  "..., 65) = 65
+statfs64("/var/run", 84, {f_type=0x1021994, f_bsize=4096, f_blocks=192723, f_bfree=192662, f_bavail=192662, f_files=192723, f_ffree=192646, f_fsid={0, 0}, f_namelen=255, f_frsize=4096}) = 0
+write(1, "none                    770892  "..., 65) = 65
+statfs64("/var/lock", 84, {f_type=0x1021994, f_bsize=4096, f_blocks=192723, f_bfree=192723, f_bavail=192723, f_files=192723, f_ffree=192721, f_fsid={0, 0}, f_namelen=255, f_frsize=4096}) = 0
+write(1, "none                    770892  "..., 66) = 66
+statfs64("/proc/sys/fs/binfmt_misc", 84, {f_type=0x42494e4d, f_bsize=4096, f_blocks=0, f_bfree=0, f_bavail=0, f_files=0, f_ffree=0, f_fsid={0, 0}, f_namelen=255, f_frsize=4096}) = 0
+statfs64("/home/zhblue/.gvfs", 84, {f_type=0x65735546, f_bsize=0, f_blocks=0, f_bfree=0, f_bavail=0, f_files=0, f_ffree=0, f_fsid={0, 0}, f_namelen=0, f_frsize=0}) = 0
+statfs64("/media/D", 84, {f_type=0x65735546, f_bsize=4096, f_blocks=7102730, f_bfree=2516334, f_bavail=2516334, f_files=10196408, f_ffree=10082925, f_fsid={0, 0}, f_namelen=255, f_frsize=4096}) = 0
+write(1, "/dev/sda5             28410920  "..., 65) = 65
+close(1)                                = 0
+munmap(0xb7435000, 4096)                = 0
+close(2)                                = 0
+exit_group(0)                           = ?
+]]></test_input>
+<test_output><![CDATA[access
+brk
+close
+execve
+exit_group
+fstat64
+mmap2
+mprotect
+munmap
+open
+read
+set_thread_area
+statfs64
+write
+]]></test_output>
+<test_input><![CDATA[execve("/bin/pwd", ["pwd"], [/* 24 vars */]) = 0
+brk(0)                                  = 0x89d5000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+mmap2(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb788a000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=115704, ...}) = 0
+mmap2(NULL, 115704, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb786d000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libc.so.6", O_RDONLY)        = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0@n\1\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0755, st_size=1421892, ...}) = 0
+mmap2(NULL, 1427880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x17a000
+mmap2(0x2d1000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x157) = 0x2d1000
+mmap2(0x2d4000, 10664, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x2d4000
+close(3)                                = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb786c000
+set_thread_area({entry_number:-1 -> 6, base_addr:0xb786c8d0, limit:1048575, seg_32bit:1, contents:0, read_exec_only:0, limit_in_pages:1, seg_not_present:0, useable:1}) = 0
+mprotect(0x2d1000, 8192, PROT_READ)     = 0
+mprotect(0x804d000, 4096, PROT_READ)    = 0
+mprotect(0x8ee000, 4096, PROT_READ)     = 0
+munmap(0xb786d000, 115704)              = 0
+brk(0)                                  = 0x89d5000
+brk(0x89f6000)                          = 0x89f6000
+open("/usr/lib/locale/locale-archive", O_RDONLY|O_LARGEFILE) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=5897488, ...}) = 0
+mmap2(NULL, 2097152, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb766c000
+mmap2(NULL, 1650688, PROT_READ, MAP_PRIVATE, 3, 0x40b) = 0xb74d9000
+close(3)                                = 0
+getcwd("/home/judge/data", 4096)        = 17
+fstat64(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 0), ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb74d8000
+write(1, "/home/judge/data\n", 17)      = 17
+close(1)                                = 0
+munmap(0xb74d8000, 4096)                = 0
+close(2)                                = 0
+exit_group(0)                           = ?
+]]></test_input>
+<test_output><![CDATA[access
+brk
+close
+execve
+exit_group
+fstat64
+getcwd
+mmap2
+mprotect
+munmap
+open
+read
+set_thread_area
+write
+]]></test_output>
+<hint><![CDATA[]]></hint>
+<source><![CDATA[浙江传媒学院2011校赛]]></source>
+<solution language="C"><![CDATA[#include <stdio.h>
+#include <string.h>
+
+char func[10000][100];
+
+void strSort(int n){
+	int i,j,k;
+	char tmp[100];
+	for(i=0;i<n;i++){
+		k = i;
+		for(j=i+1;j<n;j++){
+			if(strcmp(func[k],func[j]) > 0){
+				k = j;
+			}
+		}
+		if(k != i){
+			strcpy(tmp,func[i]);
+			strcpy(func[i],func[k]);
+			strcpy(func[k],tmp);
+		}
+	}
+}
+
+void getFunc(char *str,int i){
+	int j = 0;
+	while(str[j++]){
+		if(str[j] == '('){
+			str[j] = 0;
+			if(strlen(str)){
+				strcpy(func[i],str);
+			}
+			break;
+		}
+	}
+}
+
+int main(){
+#ifndef ONLINE_JUDGE
+	freopen("in","r",stdin);
+#endif
+
+	char str[10000];
+	int i=0,j;
+	while(gets(str)){
+		getFunc(str,i++);
+	}
+
+	strSort(i);
+	strcpy(func[i],"#");
+
+	for(j=0;j<i;j++){
+		if(strcmp(func[j],func[j+1])){
+			puts(func[j]);
+		}
+	}
+
+	return 0;
+}
+]]></solution>
+</item>
+</fps>

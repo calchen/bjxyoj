@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<fps version="1.1" url="http://code.google.com/p/freeproblemset/">
+	<generator name="HUSTOJ" url="http://code.google.com/p/hustoj/"/>
+	<item>
+<title><![CDATA[A+B Problem with sample answers]]></title>
+<time_limit unit="s"><![CDATA[10]]></time_limit>
+<memory_limit unit="mb"><![CDATA[125]]></memory_limit>
+
+<description><![CDATA[<p>Calculate a+b</p>]]></description>
+<input><![CDATA[<p>Two integer a,b (0&lt;=a,b&lt;=10)</p>]]></input> 
+<output><![CDATA[<p>Output a+b</p>]]></output>
+<sample_input><![CDATA[1 2]]></sample_input>
+<sample_output><![CDATA[3]]></sample_output>
+<test_input><![CDATA[2 3]]></test_input>
+<test_output><![CDATA[5]]></test_output>
+<hint><![CDATA[<p></p>
+<p>#include &lt;stdio.h&gt;</p>
+<p></p>
+<p>int main()</p>
+<p></p>
+<p>{</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp; int a,b;</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp; while(scanf(&quot;%d %d&quot;,&amp;a, &amp;b) != EOF)</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;%d\n&quot;,a+b);</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp; return 0;</p>
+<p></p>
+<p>}</p>
+<p><br />
+<br />
+</p>
+<p>#include &lt;iostream&gt;</p>
+<p></p>
+<p>using namespace std;</p>
+<p></p>
+<p>int main()</p>
+<p></p>
+<p>{</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp; int a,b;</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp; while(cin &gt;&gt; a &gt;&gt; b)</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a+b &lt;&lt; endl;</p>
+<p></p>
+<p>}</p>
+<p><br />
+<br />
+</p>
+<p>program p1001(Input,Output);</p>
+<p></p>
+<p>var</p>
+<p></p>
+<p>&nbsp; a,b:Integer;</p>
+<p></p>
+<p>begin</p>
+<p></p>
+<p>&nbsp;&nbsp; while not eof(Input) do</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; begin</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Readln(a,b);</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Writeln(a+b);</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; end;</p>
+<p></p>
+<p>end.</p>
+<p><br />
+<br />
+<br />
+</p>
+<p>import java.util.Scanner;</p>
+<p></p>
+<p>public class Main {</p>
+<p></p>
+<p>&nbsp;&nbsp; &nbsp;public static void main(String[] args) {</p>
+<p></p>
+<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Scanner in = new Scanner(System.in);</p>
+<p></p>
+<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;while (in.hasNextInt()) {</p>
+<p></p>
+<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;int a = in.nextInt();</p>
+<p></p>
+<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;int b = in.nextInt();</p>
+<p></p>
+<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;System.out.println(a + b);</p>
+<p></p>
+<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}</p>
+<p></p>
+<p>&nbsp;&nbsp; &nbsp;}</p>
+<p></p>
+<p>}</p>
+<p><br />
+<br />
+</p>
+<p>a=gets.chomp</p>
+<p></p>
+<p>b=&quot;0&quot;</p>
+<p></p>
+<p>a.each_line(&quot; &quot;){</p>
+<p></p>
+<p>|d|</p>
+<p></p>
+<p>b=b+&quot;+&quot;+d</p>
+<p></p>
+<p>}</p>
+<p></p>
+<p>puts eval(b)</p>
+<p><br />
+<br />
+</p>
+<p>read a b</p>
+<p></p>
+<p>echo $(($a+$b))</p>
+<p><br />
+<br />
+</p>
+<p>import sys</p>
+<p></p>
+<p>for line in sys.stdin:</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp; a = line.split()</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp; print int(a[0]) + int(a[1])</p>
+<p><br />
+<br />
+<br />
+</p>
+<p>&lt;?php</p>
+<p></p>
+<p>while (fscanf(STDIN, &quot;%d%d&quot;, $a, $b) == 2) {</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp; print ($a + $b) . &quot;\n&quot;;</p>
+<p></p>
+<p>}</p>
+<p></p>
+<p>?&gt;</p>
+<p><br />
+<br />
+</p>
+<p>#! /usr/bin/perl -w</p>
+<p></p>
+<p>while(&lt;&gt;){</p>
+<p></p>
+<p>&nbsp; chomp;</p>
+<p></p>
+<p>&nbsp; ($a,$b)=split(/\s/,$_);</p>
+<p></p>
+<p>&nbsp; printf &quot;%d\n&quot;,$a+$b;</p>
+<p></p>
+<p>}</p>
+<p><br />
+<br />
+</p>
+<p>using System;</p>
+<p></p>
+<p>public class Sum</p>
+<p></p>
+<p>{</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp; public static void Main()</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp; {</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //string token = Console.ReadLine();</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //int test = int.Parse(token);</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int k = 0; k &lt; 1;k++){</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; string[] tokens = Console.ReadLine().Split(' ');</p>
+<p></p>
+<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; Console.WriteLine(int.Parse(tokens[0]) + int.Parse(tokens[1]));</p>
+<p></p>
+<p>&nbsp;&nbsp; &nbsp;}</p>
+<p></p>
+<p>&nbsp;&nbsp;&nbsp; }</p>
+<p></p>
+<p>}</p>
+<p></p>]]></hint>
+<source><![CDATA[]]></source>
+	<solution language="C"><![CDATA[#include <stdio.h>
+
+int main()
+{
+    int a,b;
+    while(scanf("%d %d",&a, &b) != EOF)
+        printf("%d\n",a+b);
+    return 0;
+}
+]]></solution>
+		<solution language="C++"><![CDATA[#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a,b;
+    while(cin >> a >> b)
+        cout << a+b << endl;
+}
+]]></solution>
+		<solution language="Pascal"><![CDATA[program p1001(Input,Output); 
+var 
+  a,b:Integer; 
+begin 
+   while not eof(Input) do 
+     begin 
+       Readln(a,b); 
+       Writeln(a+b); 
+     end; 
+end.
+
+]]></solution>
+		<solution language="Java"><![CDATA[import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		while (in.hasNextInt()) {
+			int a = in.nextInt();
+			int b = in.nextInt();
+			System.out.println(a + b);
+		}
+	}
+}
+]]></solution>
+		<solution language="Ruby"><![CDATA[a=gets.chomp
+
+b="0"
+
+a.each_line(" "){
+
+|d|
+
+b=b+"+"+d
+
+}
+
+puts eval(b)]]></solution>
+		<solution language="Bash"><![CDATA[read a b
+
+echo $(($a+$b))]]></solution>
+		<solution language="Python"><![CDATA[import sys
+for line in sys.stdin:
+    a = line.split()
+    print int(a[0]) + int(a[1])
+
+]]></solution>
+		<solution language="PHP"><![CDATA[<?php
+while (fscanf(STDIN, "%d%d", $a, $b) == 2) {
+    print ($a + $b) . "\n";
+}
+?>]]></solution>
+		<solution language="Perl"><![CDATA[#! /usr/bin/perl -w
+while(<>){
+  chomp;
+  ($a,$b)=split(/\s/,$_);
+  printf "%d\n",$a+$b;
+}]]></solution>
+		<solution language="C#"><![CDATA[using System;
+
+public class Sum
+{
+    public static void Main()
+    {
+        //string token = Console.ReadLine();
+        //int test = int.Parse(token);
+        for(int k = 0; k < 1;k++){
+        	 string[] tokens = Console.ReadLine().Split(' ');
+		 Console.WriteLine(int.Parse(tokens[0]) + int.Parse(tokens[1]));
+	}
+    }
+}
+]]></solution>
+	</item>
+</fps>

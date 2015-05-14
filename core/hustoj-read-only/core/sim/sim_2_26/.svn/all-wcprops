@@ -1,0 +1,461 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/zhblue/hustoj/!svn/ver/1673/trunk/trunk/core/sim/sim_2_26
+END
+newargs.c
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/newargs.c
+END
+sim.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/sim.html
+END
+newargs.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/newargs.h
+END
+add_run.c
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/add_run.c
+END
+LICENSE.txt
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/LICENSE.txt
+END
+token.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/token.c
+END
+add_run.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/add_run.h
+END
+hash.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/hash.c
+END
+system.par
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/system.par
+END
+text.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/text.c
+END
+token.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/token.h
+END
+pass1.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/pass1.c
+END
+aiso.bdy
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/aiso.bdy
+END
+lex.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/lex.c
+END
+language.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/language.h
+END
+hash.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/hash.h
+END
+pass3.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/pass3.c
+END
+text.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/text.h
+END
+stream.c
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/stream.c
+END
+options.c
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/options.c
+END
+pass1.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/pass1.h
+END
+lex.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/lex.h
+END
+pass3.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/pass3.h
+END
+settings.par
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/settings.par
+END
+options.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/options.h
+END
+stream.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/stream.h
+END
+idf.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/idf.c
+END
+algollike.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/algollike.c
+END
+sysidf.msdos
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/sysidf.msdos
+END
+pascallang.c
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/pascallang.c
+END
+sim.1
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/sim.1
+END
+idf.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/idf.h
+END
+algollike.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/algollike.h
+END
+TechnReport
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/TechnReport
+END
+pascallang.l
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/pascallang.l
+END
+sortlist.bdy
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/sortlist.bdy
+END
+sim.pdf
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/sim.pdf
+END
+compare.c
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/compare.c
+END
+m2lang.l
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/m2lang.l
+END
+compare.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/compare.h
+END
+textlang.l
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/textlang.l
+END
+percentages.c
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/percentages.c
+END
+miralang.l
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/miralang.l
+END
+percentages.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/percentages.h
+END
+ChangeLog
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/ChangeLog
+END
+tokenarray.c
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/tokenarray.c
+END
+lisplang.l
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/lisplang.l
+END
+README.1ST
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/README.1ST
+END
+javalang.c
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/javalang.c
+END
+tokenarray.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/tokenarray.h
+END
+sysidf.mk
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/sysidf.mk
+END
+runs.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/runs.c
+END
+sim.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/sim.c
+END
+pass2.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/pass2.c
+END
+runs.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/runs.h
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/Makefile
+END
+javalang.l
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/javalang.l
+END
+sim.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/sim.h
+END
+pass2.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/pass2.h
+END
+aiso.spc
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/aiso.spc
+END
+Answers
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/Answers
+END
+sysidf.unix
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/sysidf.unix
+END
+VERSION
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/VERSION
+END
+Malloc.c
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/Malloc.c
+END
+READ_ME
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/READ_ME
+END
+Malloc.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/Malloc.h
+END
+ToDo
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/ToDo
+END
+clang.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/clang.c
+END
+sortlist.spc
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/sortlist.spc
+END
+debug.par
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/debug.par
+END
+lang.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/lang.h
+END
+error.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/error.c
+END
+READ.ME
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/READ.ME
+END
+clang.l
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/clang.l
+END
+error.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/error.h
+END
+option-i.inp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/zhblue/hustoj/!svn/ver/537/trunk/trunk/core/sim/sim_2_26/option-i.inp
+END

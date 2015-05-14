@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/zhblue/hustoj/!svn/ver/2274/trunk/trunk/install
+END
+db.sql
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/zhblue/hustoj/!svn/ver/2266/trunk/trunk/install/db.sql
+END
+install-interactive.sh
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/zhblue/hustoj/!svn/ver/2176/trunk/trunk/install/install-interactive.sh
+END
+multiOJ.sh
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/zhblue/hustoj/!svn/ver/2273/trunk/trunk/install/multiOJ.sh
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/zhblue/hustoj/!svn/ver/922/trunk/trunk/install/README
+END
+install.sh
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/zhblue/hustoj/!svn/ver/2177/trunk/trunk/install/install.sh
+END
+java0.policy
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/zhblue/hustoj/!svn/ver/11/trunk/trunk/install/java0.policy
+END
+judge.conf
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/zhblue/hustoj/!svn/ver/2109/trunk/trunk/install/judge.conf
+END
+judged
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/zhblue/hustoj/!svn/ver/2109/trunk/trunk/install/judged
+END
