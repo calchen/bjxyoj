@@ -10,12 +10,24 @@
 
 <center>
 <div style="width:90%; margin:0 auto; text-align:left;"> 
-<div style="text-align:left;font-size:80%;float:left;">[ <a href="newpost.php">New Thread</a> ]</div>
+<div style="text-align:left;font-size:80%;float:left;">[ <a href="newpost.php">发新帖</a> ]</div>
 <?php if ($isadmin){
-	?><div style="font-size:80%; float:right"> Change sticky level to<?php $adminurl = "threadadmin.php?target=thread&tid={$_REQUEST['tid']}&action=";
-	if ($row->top_level == 0) echo "[ <a href=\"{$adminurl}sticky&level=3\">Level Top</a> ] [ <a href=\"{$adminurl}sticky&level=2\">Level Mid</a> ] [ <a href=\"{$adminurl}sticky&level=1\">Level Low</a> ]"; else echo "[ <a href=\"{$adminurl}sticky&level=0\">Standard</a> ]";
-	?> | <?php if ($row->status != 1) echo (" [ <a  href=\"{$adminurl}lock\">Lock</a> ]"); else echo(" [ <a href=\"{$adminurl}resume\">Resume</a> ]");
-	?> | <?php echo (" [ <a href=\"{$adminurl}delete\">Delete</a> ]");
+	?><div style="font-size:80%; float:right"> 修改状态为
+    <?php
+    $adminurl = "threadadmin.php?target=thread&tid={$_REQUEST['tid']}&action=";
+	if ($row->top_level == 0)
+        echo "[ <a href=\"{$adminurl}sticky&level=3\">最高等级</a> ] [ <a href=\"{$adminurl}sticky&level=2\">中间等级</a> ] [ <a href=\"{$adminurl}sticky&level=1\">最低等级</a> ]";
+    else
+        echo "[ <a href=\"{$adminurl}sticky&level=0\">标准</a> ]";
+	?> |
+    <?php
+        if ($row->status != 1)
+            echo (" [ <a  href=\"{$adminurl}lock\">锁帖</a> ]");
+        else
+            echo(" [ <a href=\"{$adminurl}resume\">解锁</a> ]");
+	?>
+    |
+    <?php echo (" [ <a href=\"{$adminurl}删除\">删除</a> ]");
 	?></div><?php }
 ?>
 <table style="width:100%; clear:both">
@@ -23,7 +35,7 @@
 	<td style="text-align:left">
 	<a href="discuss.php<?php if ($row->pid!=0 && $row->cid!=null) echo "?pid=".$row->pid."&cid=".$row->cid;
 	else if ($row->pid!=0) echo"?pid=".$row->pid; else if ($row->cid!=null) echo"?cid=".$row->cid;?>">
-	<?php if ($row->pid!=0) echo "Problem ".$row->pid; else echo "MainBoard";?></a> >> <?php echo nl2br(htmlspecialchars($row->title));?></td>
+	<?php if ($row->pid!=0) echo "问题 ".$row->pid; else echo "MainBoard";?></a> >> <?php echo nl2br(htmlspecialchars($row->title));?></td>
 </tr>
 
 <?php
@@ -47,13 +59,13 @@
 		<div class="mon" style="display:inline;text-align:right; float:right">
 			<?php if (isset($_SESSION['administrator'])) {?>  
 			<span>[ <a href="
-				<?php if ($row->status==0) echo $url."disable\">Disable";
+				<?php if ($row->status==0) echo $url."disable\">不可用";
 				else echo $url."resume\">Resume";
 				?> </a> ]</span>
-			<span>[ <a href="#">Reply</a> ]</span> 
+			<span>[ <a href="#">回复</a> ]</span>
 			<?php } ?>
-			<span>[ <a href="#">Quote</a> ]</span>
-			<span>[ <a href="#">Edit</a> ]</span>
+			<span>[ <a href="#">引用</a> ]</span>
+			<span>[ <a href="#">编辑</a> ]</span>
 			<span>[ <a 
 			<?php if ($isuser || $isadmin) echo "href=".$url."delete";
 			?>
@@ -64,7 +76,7 @@
 		<div class=content style="text-align:left; clear:both; margin:10px 30px">
 			<?php	if ($row->status == 0) echo nl2br(htmlspecialchars($row->content));
 					else {
-						if (!$isuser || $isadmin)echo "<div style=\"border-left:10px solid gray\"><font color=red><i>Notice : <br>This reply is blocked by administrator.</i></font></div>";
+						if (!$isuser || $isadmin)echo "<div style=\"border-left:10px solid gray\"><font color=red><i>提示 : <br>该条回复已被管理员屏蔽。</i></font></div>";
 						if ($isuser || $isadmin) echo nl2br(htmlspecialchars($row->content));
 					}
 			?>
@@ -76,13 +88,13 @@
 	}
 ?>
 </table>
-<div style="font-size:90%; width:100%; text-align:center">[<a href="#">Top</a>]  [<a href="#">Previous Page</a>]  [<a href="#">Next Page</a>] </div>
+<div style="font-size:90%; width:100%; text-align:center">[<a href="#">顶部</a>]  [<a href="#">前一页</a>]  [<a href="#">下一页</a>] </div>
 <?php if (isset($_SESSION['user_id'])){?>
-<div style="font-size:80%;"><div style="margin:0 10px">New Reply:</div></div>
+<div style="font-size:80%;"><div style="margin:0 10px">新回复:</div></div>
 <form action="post.php?action=reply" method=post>
 <input type=hidden name=tid value=<?php echo $_REQUEST['tid'];?>>
 <div><textarea name=content style="border:1px dashed #8080FF; width:700px; height:200px; font-size:75%;margin:0 10px; padding:10px"></textarea></div>
-<div><input type="submit" style="margin:5px 10px" value="Submit"></input></div>
+<div><input type="submit" style="margin:5px 10px" value="回复"></input></div>
 </form>
 <?php }
 ?>
