@@ -27,7 +27,7 @@
 			$view_news.= "<tr><td><td>".$row->content."</tr>";
 		}
 		mysql_free_result($result);
-		$view_news.= "<tr><td width=20%><td>本 <a href=http://cm.baylor.edu/welcome.icpc>ACM/ICPC</a> 在线评测系统是一个GP开源项目，基于<a href=http://github.com/zhblue/hustoj>hustoj</a></tr>";
+		$view_news.= "<tr><td width=20%><td>本 <a href=http://cm.baylor.edu/welcome.icpc>ACM/ICPC</a> 在线评测系统是一个GPL开源项目，基于<a href=http://github.com/zhblue/hustoj>hustoj</a></tr>";
 		$view_news.= "</table>";
 	}
 $view_apc_info="";
