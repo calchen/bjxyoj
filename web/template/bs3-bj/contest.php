@@ -35,7 +35,7 @@
                 当前时间: <span style="color: #993399;"><span id=nowdate> <?php echo date("Y-m-d H:i:s") ?></span></span>
                 &nbsp;状态:<?php
                 if ($now > $end_time)
-                    echo "<span class=red>进行中</span>";
+                    echo "<span class=red>已结束</span>";
                 else if ($now < $start_time)
                     echo "<span class=blue>未开始</span>";
                 else
