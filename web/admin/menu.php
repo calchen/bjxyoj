@@ -101,15 +101,15 @@ if (isset($OJ_ONLINE)&&$OJ_ONLINE){
 	<a class='btn btn-default' href="http://code.google.com/p/freeproblemset/" target="_blank"><b>FreeProblemSet</b></a>
 <li>
 	<a class='btn btn-default' href="http://acmclub.com" target="_blank"><b>ACM俱乐部免费开通校级OJ服务器</b></a>
+    <?php if (isset($_SESSION['administrator'])&&!$OJ_SAE){
+        ?>
+        <a class='btn btn-default' href="problem_copy.php" target="main" title="Create your own data"><font color="eeeeee">复制问题</font></a> <br>
+        <a class='btn btn-default' href="problem_changeid.php" target="main" title="Danger,Use it on your own risk"><font color="eeeeee">修改问题ID</font></a>
 
+    <?php }
+    ?>
 </ol>
-<?php if (isset($_SESSION['administrator'])&&!$OJ_SAE){
-?>
-	<a href="problem_copy.php" target="main" title="Create your own data"><font color="eeeeee">CopyProblem</font></a> <br>
-	<a href="problem_changeid.php" target="main" title="Danger,Use it on your own risk"><font color="eeeeee">ReOrderProblem</font></a>
-   
-<?php }
-?>
+
 <h4>
 </body>
 </html>

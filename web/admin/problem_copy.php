@@ -6,14 +6,14 @@ if (!(isset($_SESSION['administrator']))){
 ?>
 <ol>
 <li>
-Copy from http://plg1.cs.uwaterloo.ca/~acm00/
+从 http://plg1.cs.uwaterloo.ca/~acm00/ 复制题目
 <form method=POST action=problem_add_page_waterloo.php>
   <input name=url type=text size=100>
   <input type=submit>
 </form>
 </li>
 <li>
-Copy from acm.pku.edu.cn
+从 acm.pku.edu.cn 复制题目
 <form method=POST action=problem_add_page_pku.php>
   <input name=url type=text size=100>
   <input type=submit>
@@ -21,7 +21,7 @@ Copy from acm.pku.edu.cn
 </li>
 
 <li>
-Copy from acm.hdu.edu.cn
+从 acm.hdu.edu.cn 复制题目
 <form method=POST action=problem_add_page_hdu.php>
   <input name=url type=text size=100>
   <input type=submit>
@@ -29,7 +29,7 @@ Copy from acm.hdu.edu.cn
 </li>
 
 <li>
-Copy from acm.zju.edu.cn
+从 acm.zju.edu.cn 复制题目
 <form method=POST action=problem_add_page_zju.php>
   <input name=url type=text size=100>
   <input type=submit>

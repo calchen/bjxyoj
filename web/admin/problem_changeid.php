@@ -75,11 +75,11 @@ function writable($path){
 	}	
 	if($show_form){
 ?>
-<b>Change ProblemID</b>
+<b>修改问题ID</b>
 	<ol>
-	<li>Problem
-	<form action='problem_changeid.php' method=post>
-		Move<input type=input name='from'>->
+	<li><问题></问题>
+	<form action='problem_changeid.php' method=post style="margin-top: 5px;">
+		由<input type=input name='from'>变更为
 		<input type=input name='to'>
 		<input type='hidden' name='do' value='do'>
 		<input type=submit value=submit>
