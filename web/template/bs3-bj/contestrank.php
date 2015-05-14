@@ -40,7 +40,7 @@
             }
             ?>
         </center>
-        <center></center>
+        <center>
         <table id=rank>
             <thead>
             <tr class=toprow>
