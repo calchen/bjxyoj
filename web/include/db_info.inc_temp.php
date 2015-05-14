@@ -1,10 +1,9 @@
 <?php @session_start();
 	ini_set("display_errors","Off");
-require_once("password.php");
-//static 	$DB_HOST="127.0.0.1";
-//static 	$DB_NAME="jol";
-//static 	$DB_USER="bjxyoj";
-//static 	$DB_PASS="TbLbVkyU^Fz@Z1sX";
+static 	$DB_HOST="127.0.0.1";
+static 	$DB_NAME="jol";
+static 	$DB_USER="bjxyoj";
+static 	$DB_PASS="";
 	// connect db 
 static 	$OJ_NAME="滨江学院 OJ";
 static 	$OJ_HOME="./";
