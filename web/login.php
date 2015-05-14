@@ -3,7 +3,7 @@
 	$vcode=trim($_POST['vcode']);
     if($OJ_VCODE&&($vcode!= $_SESSION["vcode"]||$vcode==""||$vcode==null) ){
 		echo "<script language='javascript'>\n";
-		echo "alert('Verify Code Wrong!');\n";
+		echo "alert('验证码错误!');\n";
 		echo "history.go(-1);\n";
 		echo "</script>";
 		exit(0);
@@ -32,7 +32,7 @@
 	}else{
 		
 		echo "<script language='javascript'>\n";
-		echo "alert('UserName or Password Wrong!');\n";
+		echo "alert('用户名或密码错误!');\n";
 		echo "history.go(-1);\n";
 		echo "</script>";
 	}
