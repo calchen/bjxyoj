@@ -12,6 +12,11 @@
 </head>
 
 <body>
+<style>
+    li {
+        margin-bottom: 3px;
+    }
+</style>
 <hr>
 <h4>
 <ol>
