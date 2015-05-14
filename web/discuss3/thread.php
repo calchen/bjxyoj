@@ -59,8 +59,8 @@
 		<div class="mon" style="display:inline;text-align:right; float:right">
 			<?php if (isset($_SESSION['administrator'])) {?>  
 			<span>[ <a href="
-				<?php if ($row->status==0) echo $url."disable\">不可用";
-				else echo $url."resume\">Resume";
+				<?php if ($row->status==0) echo $url."disable\">屏蔽";
+				else echo $url."resume\">恢复";
 				?> </a> ]</span>
 			<span>[ <a href="#">回复</a> ]</span>
 			<?php } ?>
@@ -69,7 +69,7 @@
 			<span>[ <a 
 			<?php if ($isuser || $isadmin) echo "href=".$url."delete";
 			?>
-			>Delete</a> ]</span>
+			>删除</a> ]</span>
 			<span style="width:5em;text-align:right;display:inline-block;font-weight:bold;margin:0 10px">
 			<?php echo $i+1;?>#</span>
 		</div>
