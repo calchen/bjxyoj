@@ -188,7 +188,7 @@ else
 
         </select>
         <?php require_once("../include/set_post_key.php");?>
-        <br>问题:<input class=input-xxlarge type=text size=60 name=cproblem
+        <br>问题:<input class=input-xxlarge type=text size=60 name=cproblem placeholder="请用英文分号分隔题号"
                       value="<?php echo isset($plist) ? $plist : ""?>">
         <br>
 

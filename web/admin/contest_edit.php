@@ -154,7 +154,7 @@ else
     </select>
     密码:<input type=text name=password value="<?php echo htmlentities($password, ENT_QUOTES, 'utf-8') ?>">
     <br>
-    问题:<input class=input-xxlarge type=text size=60 name=cproblem value='<?php echo $plist ?>'>
+    问题:<input class=input-xxlarge type=text size=60 name=cproblem placeholder="请用英文分号分隔题号" value='<?php echo $plist ?>'>
 
     语言:<select name="lang[]" multiple="multiple" style="height:220px">
         <?php
