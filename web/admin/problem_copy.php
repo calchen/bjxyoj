@@ -4,7 +4,7 @@ if (!(isset($_SESSION['administrator']))){
 	exit(1);
 }
 ?>
-<ol>
+<ol style="margin: 20px 0 0 50px;">
 <li>
 从 http://plg1.cs.uwaterloo.ca/~acm00/ 复制题目
 <form method=POST action=problem_add_page_waterloo.php>
