@@ -23,7 +23,7 @@ if (isset($_GET['solution_id'])){
 	$sql="select * from solution where solution_id=$solution_id LIMIT 1";
 	//echo $sql;
 
-	if($OJ_MEMCACHE){
+	if($OJ_REDIS){
 //		require("./include/memcache.php");
         require("./include/redis.php");
 		$result = mysql_query_cache($sql);// or die("Error! ".mysql_error());
@@ -37,7 +37,7 @@ if (isset($_GET['solution_id'])){
 	}
 
 	for ($i=0;$i<$rows_cnt;$i++){
-	if($OJ_MEMCACHE)
+	if($OJ_REDIS)
 		$row=$result[$i];
 	else
 		$row=mysql_fetch_array($result);
@@ -67,7 +67,7 @@ if (isset($_GET['solution_id'])){
 	}
 }
 
-if(!$OJ_MEMCACHE)mysql_free_result($result);
+if(!$OJ_REDIS)mysql_free_result($result);
 
 ?>
 
