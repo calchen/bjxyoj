@@ -25,7 +25,8 @@ $sql = "select * from solution where solution_id=$solution_id LIMIT 1";
 
 if ($OJ_MEMCACHE)
 {
-    require("./include/memcache.php");
+//    require("./include/memcache.php");
+    require("./include/redis.php");
     $result = mysql_query_cache($sql);// or die("Error! ".mysql_error());
     if ($result) $rows_cnt = count($result);
     else $rows_cnt = 0;
